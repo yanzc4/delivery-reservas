@@ -1,3 +1,3 @@
 <?php
 
-require ('vistas/login.php');
+echo "hola aqui pon el login";
