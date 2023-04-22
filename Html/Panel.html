@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./style.css">
+    <title>DASHBOARD</title>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./images/delivery.png">
+                    <h2>TU <span class="danger">DELIVERY</span> </h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        space_dashboard
+                    </span>
+                    <h3>DASHBOARD</h3>
+                </a>
+                <a href="#" class="active">
+                    <span class="material-symbols-sharp">
+                        person_outline
+                    </span>
+                    <h3>Clientes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Pedidos</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        leaderboard
+                    </span>
+                    <h3>Estadisticas</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        inventory
+                    </span>
+                    <h3>Productos</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Reportes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        settings
+                    </span>
+                    <h3>Ajustes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        textsms
+                    </span>
+                    <h3>Mensajes</h3>
+                    <span class="message-count">28</span>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        add
+                    </span>
+                    <h3>Agregar Producto</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        logout
+                    </span>
+                    <h3>Salir</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <h1>DASHBOARD</h1>
+
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="insights">
+                <div class="sales">
+                    <span class="material-symbols-sharp">
+                        analytics
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Ventas Totales</h3>
+                            <h2>$ 1000</h2>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>81%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">
+                        Ultimas 24 horas
+                    </small>
+                </div>
+                <!-- Sales -->
+                <div class="expenses">
+                    <span class="material-symbols-sharp">
+                        bar_chart
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Gastos totales</h3>
+                            <h2>$ 105,24</h2>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>61%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">
+                        Ultimas 24 horas
+                    </small>
+                </div>
+                <!-- Expensive -->
+                <div class="income">
+                    <span class="material-symbols-sharp">
+                        stacked_line_chart
+                    </span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total de ingreso</h3>
+                            <h2>$ 18111,00</h2>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx='38' cy='38' r='36'></circle>
+                            </svg>
+                            <div class="number">
+                                <p>41%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="text-muted">
+                        Ultimas 24 horas
+                    </small>
+                </div>
+                <!-- Income  -->
+            </div>
+
+            <div class="recent-orders">
+                <h2>Ordenes recientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre Pedido</th>
+                            <th>Numero Pedido</th>
+                            <th>Pago</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Arroz con Pollo</td>
+                            <td>8561</td>
+                            <td>Due</td>
+                            <td class="warning">Pendiente</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                        <tr>
+                            <td>Salchipapa</td>
+                            <td>8458</td>
+                            <td>Due</td>
+                            <td class="warning">Entregado</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                        <tr>
+                            <td>Arroz con Pollo</td>
+                            <td>8561</td>
+                            <td>Due</td>
+                            <td class="warning">Pendiente</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                        <tr>
+                            <td>Arroz con Pollo</td>
+                            <td>8561</td>
+                            <td>Due</td>
+                            <td class="warning">Pendiente</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                        <tr>
+                            <td>Arroz con Pollo</td>
+                            <td>8561</td>
+                            <td>Due</td>
+                            <td class="warning">Pendiente</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                        <tr>
+                            <td>Arroz con Pollo</td>
+                            <td>8561</td>
+                            <td>Due</td>
+                            <td class="warning">Pendiente</td>
+                            <td class="primary">Detalle</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#">Mostrar Todos</a>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
