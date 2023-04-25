@@ -49,8 +49,8 @@
 
                 <li class="nav-link">
                     <a href="view/listapedidos.php" target="myFrame">
-                        <i class='bx bx-dish icon'></i>
-                        <span class="text nav-text">Pedidos</span>
+                    <i class='bx bx-food-menu icon'></i>
+                        <span class="text nav-text">Mi Lista</span>
                     </a>
                 </li>
 
