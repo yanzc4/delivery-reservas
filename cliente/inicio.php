@@ -124,6 +124,42 @@
         .text-rosa {
             color: #F97777;
         }
+
+        .carrito {
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .pagar, .pagar:hover, .pagar:active {
+            text-decoration: none;
+            width: 60px;
+            height: 60px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            background: #F97777;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 35px;
+        }
+
+        .contador {
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #F97777;
+            font-size: 14px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -231,6 +267,13 @@
         </div>
 
         <?php require_once('../frontend/platos.php') ?>
+
+        <div class="carrito">
+            <a href="pedidos.php" target="myFrame" class="pagar">
+                <span class="material-symbols-outlined">shopping_cart</span>
+            </a>
+            <span class="contador">+1</span>
+        </div>
 
     </div>
 

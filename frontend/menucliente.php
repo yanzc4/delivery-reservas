@@ -7,7 +7,7 @@
 
             <div class="text logo-text">
                 <span class="name">Boomerang</span>
-                <span class="profession">Admin</span>
+                <span class="profession">Cliente</span>
             </div>
         </div>
 
@@ -48,14 +48,14 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="view/listapedidos.php" target="myFrame">
+                    <a href="pedidos.php" target="myFrame">
                     <i class='bx bx-food-menu icon'></i>
-                        <span class="text nav-text">Mi Lista</span>
+                        <span class="text nav-text">Pedidos</span>
                     </a>
                 </li>
 
                 <li class="nav-link">
-                    <a href="view/perfil.php" target="myFrame">
+                    <a href="perfil.php" target="myFrame">
                         <i class='bx bx-user icon'></i>
                         <span class="text nav-text">Perfil</span>
                     </a>
