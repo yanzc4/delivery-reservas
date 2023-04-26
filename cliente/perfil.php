@@ -8,6 +8,7 @@ $rol = "cliente";
 $cel = "999999999";
 $pass = "1234";
 $nacimiento = "29-10-2000";
+$cabecera = "Perfil";
 
 ?>
 <!DOCTYPE html>
@@ -23,16 +24,28 @@ $nacimiento = "29-10-2000";
     <link rel="stylesheet" href="../assets/css/perfil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../assets/css/cabecera.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .modal {
             text-align: center;
             background-color: #18191a;
             width: 100%;
         }
+        .seccion-perfil-usuario{
+            background: transparent;
+        }
     </style>
 </head>
 
 <body>
+    <?php
+    $user_agent = $_SERVER["HTTP_USER_AGENT"];
+    if (preg_match("/(android|webos|avantgo|iphone|ipod|ipad|bolt|boost|cricket|docomo|fone|hiptop|opera mini|mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $user_agent)) {
+        require_once "../frontend/cabecera.php";
+    }
+    ?>
+
     <!--==========================
 =            html            =
 ===========================-->

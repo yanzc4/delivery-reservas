@@ -1,3 +1,6 @@
+<?php
+$cabecera="Delivery";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
