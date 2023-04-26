@@ -62,7 +62,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="view/perfil.php" target="myFrame">
+                    <a href="soporte.php" target="myFrame">
                         <i class='bx bx-support icon'></i>
                         <span class="text nav-text">Soporte</span>
                     </a>
