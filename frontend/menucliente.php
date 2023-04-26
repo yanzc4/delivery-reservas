@@ -34,7 +34,7 @@
 
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="inicio.php" target="myFrame">
+                    <a href="home.php" target="myFrame">
                         <i class='bx bx-home-alt icon'></i>
                         <span class="text nav-text">Inicio</span>
                     </a>
