@@ -18,7 +18,7 @@ $cabecera="Delivery";
 <?php require_once('../frontend/menucliente.php') ?>
 
 <section class="home">
-    <iframe src="home.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
+    <iframe src="platos.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
     
         <!--<div class="text">Dashboard Sidebar</div>-->
     </section>

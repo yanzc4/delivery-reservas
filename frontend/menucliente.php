@@ -34,7 +34,7 @@
 
             <ul class="menu-links">
                 <li class="nav-link">
-                    <a href="home.php" target="myFrame">
+                    <a href="platos.php" target="myFrame">
                         <i class='bx bx-home-alt icon'></i>
                         <span class="text nav-text">Inicio</span>
                     </a>
@@ -62,7 +62,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="soporte.php" target="myFrame">
+                    <a href="chatbot.php" target="myFrame">
                         <i class='bx bx-support icon'></i>
                         <span class="text nav-text">Soporte</span>
                     </a>
