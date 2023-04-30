@@ -8,3 +8,10 @@ nombre varchar(100) not null,
 apellido varchar(150) not null,
 f_nacimiento date
 );
+
+create table ubicacion
+(id int not null,
+lat varchar (100) not null,
+lng varchar (100) not null,
+FOREIGN KEY (id) REFERENCES usuario(id)
+);
