@@ -1,6 +1,6 @@
 <?php
 $cabecera = "Delivery";
-$id = 5;
+$id = 4;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +42,7 @@ $id = 5;
         const map = L.map('map');
         // coordenadas lima -12.039733677889739, -77.03996420518459
 
-        map.setView([-12.039733677889739, -77.03996420518459], 13);
+        map.setView([-11.863641126812807, -77.07626043157313], 13);
         // Sets initial coordinates and zoom level
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -67,62 +67,31 @@ $id = 5;
             iconSize: [38],
         });
 
+        L.marker([-11.863641126812807, -77.07626043157313], {icon: restauranteIcon}).addTo(map).bindPopup("Ubicacion del Restaurante");
 
         // select u.id, ub.lat, ub.lng, concat(u.nombre,' ',u.apellido) from usuario u join ubicacion ub on u.id=ub.id;
         <?php
         require_once "../inc/conexion.php";
         $con=conectar();
-        $sql="select ub.id, ub.lat, ub.lng, concat(c.nombre,' ',c.apellido) from ubicacion ub join clientes c on ub.id=c.id where ub.repartidor=$id";
-
+        $sql="select ub.id, ub.lat, ub.lng, concat(c.nombre,' ',c.apellido) from ubicacion ub join clientes c on ub.id=c.id";
+        
         $resultado=mysqli_query($con,$sql);
         while($fila=mysqli_fetch_row($resultado)){
             echo "L.marker([".$fila[1].", ".$fila[2]."], {icon: clienteIcon}).addTo(map).bindPopup('".$fila[3]."');";
         }
+
+
+        //fetch data from json
+        $data = file_get_contents('../database/empleados.json');
+        //decode into php array
+        $data = json_decode($data);
+
+        $index = 0;
+        foreach($data as $row){
+            echo "L.marker([".$row->lat.", ".$row->lng."], {icon: empleadoIcon}).addTo(map).bindPopup('".$row->nombre."');";
+            $index++;
+        }
         ?>
-        
-        //L.marker([-11.833885978707777, -77.11822736100126], {icon: greenIcon}).addTo(map).bindPopup("Soy un cliente");
-
-        navigator.geolocation.watchPosition(success, error);
-
-        function success(pos) {
-
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
-            const accuracy = pos.coords.accuracy;
-
-            if (marker) {
-                map.removeLayer(marker);
-                map.removeLayer(circle);
-            }
-            // Removes any existing marker and circule (new ones about to be set)
-
-            marker = L.marker([lat, lng]).addTo(map).bindPopup("Soy un Marcador");
-            circle = L.circle([lat, lng]).addTo(map);
-            // Adds marker to the map and a circle for accuracy
-
-            if (!zoomed) {
-                zoomed = map.fitBounds(circle.getBounds());
-            }
-            // Set zoom to boundaries of accuracy circle
-
-            map.setView([lat, lng]);
-            // Set map focus to current user position
-
-        }
-        //nueoo
-        /*
-        function success (position){
-            const userIcon = L.icon({
-                iconUrl: '../assets/img/hoja.png',
-                iconSize: [38, 42],
-            })
-            const newUserMarker = L.marker([position.coords.latitude, position.coords.longitude], {
-                icon: userIcon
-            });
-            newUserMarker.bindPopup('New User!');
-            map.addLayer(newUserMarker);
-        }
-        */
         function error(err) {
 
             if (err.code === 1) {

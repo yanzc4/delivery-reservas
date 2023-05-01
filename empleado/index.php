@@ -1,5 +1,6 @@
 <?php
-$cabecera="Delivery";
+$cabecera = "Delivery";
+$id = 5;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -15,13 +16,40 @@ $cabecera="Delivery";
 </head>
 
 <body class="dark">
-<?php require_once('../frontend/menuEmpleado.php') ?>
+    <?php require_once('../frontend/menuEmpleado.php') ?>
 
-<section class="home">
-    <iframe src="inicio.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
-    
+    <section class="home">
+        <iframe src="inicio.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
+
     </section>
 
+
+    <script>
+        function obtenerUbicacion() {
+            navigator.geolocation.getCurrentPosition(position => {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var id = <?php echo $id ?>;
+
+                // Realizamos una petición AJAX a un archivo PHP
+                $.ajax({
+                    url: "../backend/empleado/ubicacion.php",
+                    method: "POST",
+                    data: {
+                        lat,
+                        lng,
+                        id
+                    }
+                }).done(function(response) {
+                    // La respuesta de PHP se almacena en la variable 'response'
+                    console.log(response);
+                });
+
+            });
+        }
+        obtenerUbicacion();
+    </script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/menu/funcionmenu.js"></script>
 </body>
