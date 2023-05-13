@@ -13,6 +13,15 @@ $cabecera="Delivery";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../assets/css/cabecera.css">
+    <style>
+        .detalleImagen{
+            width: 50%;
+        }
+        .btn-transparente{
+            border: none;
+            background: transparent;
+        }
+    </style>
 </head>
 
 <body>
@@ -118,7 +127,7 @@ $cabecera="Delivery";
             </div>
         </div>
 
-        <?php require_once('../frontend/platos.php') ?>
+        <?php require_once('../backend/clientes/buscarPlatos.php') ?>
 
         <div class="carrito">
             <a href="pedidos.php" target="myFrame" class="pagar">

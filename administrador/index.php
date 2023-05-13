@@ -1,3 +1,3 @@
 <?php
 
-echo "hola desde administrador";
+echo "hola aqui va el login de david redirecciona a administrador";

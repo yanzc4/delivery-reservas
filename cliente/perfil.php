@@ -19,20 +19,22 @@ $cabecera = "Perfil";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apock web design</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="../assets/css/perfil.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../assets/css/cabecera.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        .modal {
-            text-align: center;
-            background-color: #18191a;
-            width: 100%;
+        body {
+            background-color: transparent;
         }
-        .seccion-perfil-usuario{
+
+        .bg-modal1{
+            background: #18191a;
+            color: #ccc;
+        }
+
+        .seccion-perfil-usuario {
             background: transparent;
         }
     </style>
@@ -70,20 +72,20 @@ $cabecera = "Perfil";
                     su codigo de empleado el cual le asigno el sistema es <?php echo $id ?>
                 </p>
             </div>
-            <div class="perfil-usuario-footer">
+            <div class="perfil-usuario-footer pb-0">
                 <ul class="lista-datos">
                     <li><i class="icono fas fa-map-signs"></i><label>Direccion de usuario:</label></li>
                     <li><i class="icono fas fa-phone-alt"></i><label>Telefono: <?php echo $cel ?></label></li>
                     <li><i class="icono fas fa-briefcase"></i><label>Trabaja en: Boomerang</label></li>
                     <li><i class="icono fas fa-building"></i><label> Cargo: <?php echo $rol ?></label></li>
                 </ul>
-                <ul class="lista-datos">
+                <ul class="lista-datos pb-0">
                     <li><i class="icono fas fa-location"></i><label>Ubicacion.</label></li>
                     <li><i class="icono fas fa-calendar-alt"></i><label>Fecha nacimiento.</label></li>
                     <li><i class="icono fas fa-user-alt"></i><label>Registro.</label></li>
                     <li>
                         <i class="icono fas fa-unlock-alt"></i><label>Contraseña</label>
-                        <a href="#login-form" class="btn-modal" rel="modal:open"><i class="fas fa-edit" style="color:#317FFF;"></i></a>
+                        <button class="btn-modal" data-bs-toggle="modal" data-bs-target="#modalCambiarPass"><i class="fas fa-edit" style="color:#317FFF;"></i></button>
                     </li>
                 </ul>
             </div>
@@ -98,24 +100,35 @@ $cabecera = "Perfil";
 
 
     <!--====  Modal  ====-->
-    <form id="login-form" class="modal">
-        <div class="contenedor-modal">
-            <input type="hidden" id="id" name="id" value="<?php echo $id ?>">
-            <input type="hidden" id="name" name="name" value="<?php echo $nombre ?>">
-            <input type="hidden" id="apellido" name="apellido" value="<?php echo $apellido ?>">
-            <input type="hidden" id="celular" name="celular" value="<?php echo $cel ?>">
-            <input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario ?>">
-            <input type="hidden" id="nacimiento" name="nacimiento" value="<?php echo $nacimiento ?>">
-            <label class="texto1">Contraseña: </label>
-            <input type="text" class="cajatext" id="pass" name="pass" value="">
-            <input type="hidden" id="nivel" name="nivel" value="<?php echo $rol ?>">
-            <button id="btnpass" class="btn">Cambiar</button>
+    <div class="modal fade" id="modalCambiarPass">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-modal1">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar contraseña</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="cambiarPass">
+                        <input type="hidden" id="id" name="id" value="<?php echo $id ?>">
+                        <input type="hidden" id="name" name="name" value="<?php echo $nombre ?>">
+                        <input type="hidden" id="apellido" name="apellido" value="<?php echo $apellido ?>">
+                        <input type="hidden" id="celular" name="celular" value="<?php echo $cel ?>">
+                        <input type="hidden" id="usuario" name="usuario" value="<?php echo $usuario ?>">
+                        <input type="hidden" id="nacimiento" name="nacimiento" value="<?php echo $nacimiento ?>">
+                        <label class="form-label">Contraseña: </label>
+                        <input type="text" class="form-control" id="pass" name="pass" value="">
+                        <input type="hidden" id="nivel" name="nivel" value="<?php echo $rol ?>">
+                        <button id="btnpass" class="btn-rosa mt-3">cambiar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
 
-    <script src="../assets/js/funcionesprincipales.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 
 </html>

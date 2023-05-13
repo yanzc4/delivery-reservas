@@ -1,3 +1,3 @@
 <?php
 
-echo "hola aqui pon el login";
+echo "hola aqui va lo de jesus ofertas se rediccionara a cliente";

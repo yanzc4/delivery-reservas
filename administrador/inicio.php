@@ -10,18 +10,22 @@ $cabecera="Delivery";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Cliente</title>
     <link rel="icon" type="image/png" href="../assets/img/delivery.png">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../assets/css/estilomenu.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+    <link rel="stylesheet" href="../assets/css/panel.css">
+    <style>
+    </style>
 </head>
 
 <body class="dark">
-<?php require_once('../frontend/menucliente.php') ?>
+<?php require_once('../frontend/menuadmin.php') ?>
 
 <section class="home">
-    <iframe src="platos.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
+    <iframe src="dashboard.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
     
         <!--<div class="text">Dashboard Sidebar</div>-->
-    </section>
+</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/menu/funcionmenu.js"></script>
