@@ -1,5 +1,5 @@
 const sideMenu =document.querySelector('aside');
-const menuBtn = document.querySelector('#menu-btn');
+const menuBtn = document.querySelector('#menubtn');
 const closeBtn = document.querySelector('#close-btn');
 const themeToggler = document.querySelector('.theme-toggler');
 

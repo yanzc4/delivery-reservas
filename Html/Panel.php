@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./style2.css">
     <title>DASHBOARD</title>
 </head>
 
@@ -24,6 +22,7 @@
                 <div class="close" id="close-btn">
                     <span class="material-symbols-sharp">close</span>
                 </div>
+                
             </div>
 
             <div class="sidebar">
@@ -88,37 +87,32 @@
                     </span>
                     <h3>Salir</h3>
                 </a>
+
+                <div class="top1">
+                    <div class="theme-toggler">
+                        <span class="material-symbols-sharp active">
+                            light_mode
+                        </span>
+                        <span class="material-symbols-sharp">
+                            dark_mode
+                        </span>
+                    </div>
+
+                </div>
             </div>
         </aside>
 
         <div class="right">
             <div class="top">
-                <button id="menu-btn">
+                <button id="menubtn">
                     <span class="material-symbols-sharp">
                         menu
                     </span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-symbols-sharp active">
-                        light_mode
-                    </span>
-                    <span class="material-symbols-sharp">
-                        dark_mode
-                    </span>
-                </div>
-                <div class="profile">
-                    <div class="info">
-                    <p>Hola <b>Admin</b></p>
-                    <small class="text-muted">Admin</small>
-                    </div>
-                </div>
-                <div class="profile-photo">
-                    <img src="./images/profile-1.jpg" alt="">
-                </div>
+                <!--Termino del top-->
             </div>
-  <!--Termino del top-->          
-         </div>
-    <script src="./index.js"></script>
+        </div>
+        <script src="./index.js"></script>
 </body>
 
 </html>
