@@ -11,7 +11,7 @@
     <title>Administrador</title>
 </head>
 
-<body>
+<body class="dark-theme-variables">
     <main>
         <h1>DASHBOARD</h1>
 
@@ -109,8 +109,7 @@
         </div>
     </main>
     
-    <script src="../assets/js/administrador/cabecera.js"></script>
-    <script src="../assets/js/administrador/funcionAdmin.js"></script>
+    
 </body>
 
 </html>

@@ -29,12 +29,6 @@ $id = 4;
 </head>
 
 <body>
-    <?php
-    $user_agent = $_SERVER["HTTP_USER_AGENT"];
-    if (preg_match("/(android|webos|avantgo|iphone|ipod|ipad|bolt|boost|cricket|docomo|fone|hiptop|opera mini|mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $user_agent)) {
-        require_once "../frontend/cabecera.php";
-    }
-    ?>
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>

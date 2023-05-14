@@ -18,17 +18,20 @@ $cabecera="Delivery";
     </style>
 </head>
 
-<body class="dark">
+<body class="dark-theme-variables">
 <?php require_once('../frontend/menuadmin.php') ?>
+<div class="cabecera">
+<?php require_once('../frontend/cabeceraAdmin.php') ?>
+</div>
 
 <section class="home">
-    <iframe src="dashboard.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
+    <iframe src="dashboard.php" id="myFrame" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
     
         <!--<div class="text">Dashboard Sidebar</div>-->
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/menu/funcionmenu.js"></script>
+    <script src="../assets/js/administrador/cabecera.js"></script>
 </body>
 
 </html>
