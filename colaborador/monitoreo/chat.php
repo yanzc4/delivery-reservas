@@ -12,7 +12,7 @@ $cabecera = "Soporte";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../assets/css/cliente/cabecera.css">
+    <link rel="stylesheet" href="../../assets/css/cliente/cabecera.css">
     <style>
         body {
             overflow: hidden;
@@ -210,7 +210,7 @@ $cabecera = "Soporte";
     <?php
     $user_agent = $_SERVER["HTTP_USER_AGENT"];
     if (preg_match("/(android|webos|avantgo|iphone|ipod|ipad|bolt|boost|cricket|docomo|fone|hiptop|opera mini|mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $user_agent)) {
-        require_once "../frontend/cabecera.php";
+        require_once "../../frontend/cabeceraColaborador.php";
     }
     ?>
     <main>
@@ -251,7 +251,7 @@ $cabecera = "Soporte";
             </div>
         </div>
     </main>
-    <script src="../assets/js/menu/activarDarkmode.js"></script>
+    <script src="../../assets/js/menu/activarDarkmode.js"></script>
 </body>
 
 </html>

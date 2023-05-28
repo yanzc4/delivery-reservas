@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+:root {
+    /* ===== Colors ===== */
+    --body-color: #F7F7F7;
+    --sidebar-color: #fff;
+    --primary-color: #F97777;
+    --primary-color-light: #f6f5ff;
+    --toggle-color: #ddd;
+    --text-color: #707070;
+    --color-white: #ffffff;
+    --color-imagen: #E4F1F3;
+    --color-box: rgba(0, 0, 0, 0.25);
+    --color-precio: #F97777;
+    --color-plato: #F97777;
+
+  
+    /* ====== Transition ====== */
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+  }
+
+body {
+    background: var(--body-color);
+    color: var(--text-color);
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+body.dark {
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+    --color-white: #707070;
+    --color-imagen: #E4F1F3;
+    --color-precio: #fff;
+    --color-plato: #707070;
+  }
+
+.text-azul {
+    color: #fff;
+}
+
+.bg-rosa {
+    background: var(--primary-color);
+}
+
+.bg-principal {
+    background: var(--primary-color);
+}
+
+.perfil {
+    width: 45px;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.redondear {
+    border-radius: 10px;
+}
+
+.bg-blanco {
+    background: var(--color-white);
+    box-shadow: 0px 4px 4px var(--color-box);
+}
+
+.bg-blanco:hover {
+    background: var(--primary-color);
+}
+
+.icon {
+    font-size: 50px;
+    padding: 10px;
+}
+
+.w-60 {
+    width: 60%;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--color-white);
+}
+
+.bg-oscuro::placeholder{
+    color: var(--text-color);
+}
+.bg-oscuro,
+.bg-oscuro:hover,
+.bg-oscuro:focus,
+.bg-oscuro:active {
+    background: var(--color-white);
+    width: 100%;
+    color: var(--text-color);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: 0px 4px 4px var(--color-box);
+}
+
+.bg-negro,
+.bg-negro:hover {
+    background: var(--color-white);
+    color: var(--text-color);
+    border: none;
+    padding: 0.6rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    box-shadow: 0px 4px 4px var(--color-box);
+}
+
+.glider::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+.bg-white {
+    background: #fff;
+    color: #707070;
+    box-shadow: 0px 24px 32px -8px var(--color-box);
+}
+.bg-white:hover{
+    box-shadow: 0px 4px 4px var(--color-box);
+}
+
+.imagen {
+    width: 100%;
+    height: 88%;
+    background: var(--color-imagen);
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    border-radius: 10px;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.fs-8 {
+    font-size: 12px;
+}
+
+.text-rosa {
+    color: var(--color-precio);
+}
+
+.text-precio{
+    color: var(--color-plato);
+}
+
+.carrito {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.pagar,
+.pagar:hover,
+.pagar:active {
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 35px;
+}
+
+.contador {
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--primary-color);
+    font-size: 14px;
+    text-align: center;
+}
+
+.btn-cantidad {
+    width: 25px;
+    height: 25px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 14px;
+    text-align: center;
+    border: none;
+}
+
+.btn-rosa {
+    width: 100%;
+    background: var(--color-precio);
+    color: var(--color-white);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}   
+
+.btn-rosa:hover,
+.btn-rosa:focus,
+.btn-rosa:active {
+    background: var(--color-white);
+    color: var(--primary-color);
+}
+
+.bg-modal{
+    background: var(--color-white);
+}

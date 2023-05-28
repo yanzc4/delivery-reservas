@@ -19,7 +19,22 @@ themeToggler.addEventListener('click', () => {
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 
     window.frames['myFrame'].document.querySelector('body').classList.toggle('dark-theme-variables');
+
+    //creamos una variable para guardar el modo actual
+    if (document.body.classList.contains('dark-theme-variables')) {
+        localStorage.setItem('admin-dark-mode', 'true');
+    }else{
+        localStorage.setItem('admin-dark-mode', 'false');
+    }
 });
 
-
-
+//obtenemos el modo actual
+if (localStorage.getItem('admin-dark-mode') === 'true') {
+    document.body.classList.add('dark-theme-variables');
+    themeToggler.querySelector('span:nth-child(1)').classList.remove('active');
+    themeToggler.querySelector('span:nth-child(2)').classList.add('active');
+}else{
+    document.body.classList.remove('dark-theme-variables');
+    themeToggler.querySelector('span:nth-child(1)').classList.add('active');
+    themeToggler.querySelector('span:nth-child(2)').classList.remove('active');
+}

@@ -23,4 +23,23 @@ modeSwitch.addEventListener("click" , () =>{
         modeText.innerText = "Dark mode";
         
     }
+
+    window.frames['myFrame'].document.querySelector('body').classList.toggle('dark');
+    
+    //creamos una variable para guardar el modo actual
+    if (document.body.classList.contains('dark')) {
+        localStorage.setItem('dark-mode', 'true');
+    }else{
+        localStorage.setItem('dark-mode', 'false');
+    }
+        
 });
+
+//obtenemos el modo actual
+if (localStorage.getItem('dark-mode') === 'true') {
+    body.classList.add('dark');
+    modeText.innerText = "Light mode";
+}else{
+    body.classList.remove('dark');
+    modeText.innerText = "Dark mode";
+}

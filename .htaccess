@@ -1,3 +1,6 @@
 RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+php_flag output_buffering on
+php_flag display_errors off

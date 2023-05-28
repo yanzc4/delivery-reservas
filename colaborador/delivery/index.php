@@ -9,14 +9,14 @@ $id = 5;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>| Empleado</title>
-    <link rel="icon" type="image/png" href="../assets/img/delivery.png">
+    <title>| Delivery</title>
+    <link rel="icon" type="image/png" href="../../assets/img/delivery.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../assets/css/estilomenu.css">
+    <link rel="stylesheet" href="../../assets/css/estilomenu.css">
 </head>
 
-<body class="dark">
-    <?php require_once('../frontend/menuEmpleado.php') ?>
+<body>
+    <?php require_once('../../frontend/menuEmpleado.php') ?>
 
     <section class="home">
         <iframe src="mapa.php" name='myFrame' style="height: 100%; width: 100%; border: none;"></iframe>
@@ -33,7 +33,7 @@ $id = 5;
 
                 // Realizamos una petición AJAX a un archivo PHP
                 $.ajax({
-                    url: "../backend/empleado/ubicacion.php",
+                    url: "../../backend/empleado/ubicacion.php",
                     method: "POST",
                     data: {
                         lat,
@@ -51,7 +51,7 @@ $id = 5;
     </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/menu/funcionmenu.js"></script>
+    <script src="../../assets/js/menu/funcionmenu.js"></script>
 </body>
 
 </html>

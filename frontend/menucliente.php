@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="ventas.php" target="myFrame">
+                    <a href="ofertas.php" target="myFrame">
                         <i class='bx bx-bowl-rice icon'></i>
                         <span class="text nav-text">Ofertas</span>
                     </a>

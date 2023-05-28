@@ -4,16 +4,18 @@
         <?php
         $plato = "Jugo de piña";
         $img = "../assets/img/bebidas.png";
+        $descripcion = "Jugo de piña con hielo";
+        $precio = "5.00";
         for ($i = 1; $i <= 8; $i++) {
         ?>
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-3">
-                <div class="container bg-white redondear" data-bs-toggle="modal" data-bs-target="#detalle">
+                <div class="container bg-white redondear">
                     <div class="row">
-                        <div class="col-4 pe-0 ps-0">
+                        <div class="col-4 pe-0 ps-0" data-bs-toggle="modal" data-bs-target="#detalle">
                             <img class="imagen" src="<?php echo $img ?>" alt="bebida">
                         </div>
                         <div class="col-8 pt-2 align-items-center text-dark">
-                            <label class="text-truncate"><?php echo $plato ?></label><br>
+                            <label class="text-truncate" data-bs-toggle="modal" data-bs-target="#detalle"><?php echo $plato ?></label><br>
                             <label for="">★★★★★</label><br>
                             <span>
                                 <span class="material-symbols-outlined">shopping_bag</span>
@@ -24,7 +26,7 @@
                                 <label for="" class="fs-8">100</label>
                             </span>
                             <br>
-                            <label for="" class="text-rosa fw-bold">S/ 5.00</label>
+                            <label for="" class="text-precio fw-bold">S/ <?php echo $precio ?></label>
                         </div>
                     </div>
                 </div>
@@ -304,9 +306,9 @@
                     <img class="detalleImagen" src="<?php echo $img ?>" alt="">
                 </div>
                 <div class="container p-3">
-                <span class="form-label text-dark"><?php echo $plato ?></span>
+                    <span class="form-label text-dark"><?php echo $plato ?></span>
                 </div>
-                
+
             </div>
         </div>
     </div>

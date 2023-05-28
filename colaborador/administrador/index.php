@@ -8,20 +8,20 @@ $cabecera="Delivery";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>| Cliente</title>
-    <link rel="icon" type="image/png" href="../assets/img/delivery.png">
+    <title>Administrador</title>
+    <link rel="icon" type="image/png" href="../../assets/img/delivery.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     
-    <link rel="stylesheet" href="../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/panel.css">
     <style>
     </style>
 </head>
 
-<body class="dark-theme-variables">
-<?php require_once('../frontend/menuadmin.php') ?>
+<body>
+<?php require_once('../../frontend/menuadmin.php') ?>
 <div class="cabecera">
-<?php require_once('../frontend/cabeceraAdmin.php') ?>
+<?php require_once('../../frontend/cabeceraAdmin.php') ?>
 </div>
 
 <section class="home">
@@ -31,7 +31,7 @@ $cabecera="Delivery";
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/administrador/cabecera.js"></script>
+    <script src="../../assets/js/administrador/cabecera.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-$cabecera="Delivery";
+$cabecera = "Delivery";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,12 +12,13 @@ $cabecera="Delivery";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="../assets/css/cabecera.css">
+    <link rel="stylesheet" href="../assets/css/cliente/cabecera.css">
     <style>
-        .detalleImagen{
+        .detalleImagen {
             width: 50%;
         }
-        .btn-transparente{
+
+        .btn-transparente {
             border: none;
             background: transparent;
         }
@@ -155,6 +156,7 @@ $cabecera="Delivery";
             }
         });
     </script>
+    <script src="../assets/js/menu/activarDarkmode.js"></script>
 
 </body>
 

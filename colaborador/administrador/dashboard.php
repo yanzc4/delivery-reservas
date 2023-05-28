@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/panel.css">
     <title>Administrador</title>
 </head>
 
-<body class="dark-theme-variables">
+<body>
     <main>
         <h1>DASHBOARD</h1>
 
@@ -109,6 +109,7 @@
         </div>
     </main>
     
+    <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <aside id="aside">
     <div class="top">
         <div class="logo">
-            <img src="../assets/img/delivery.png">
+            <img src="../../assets/img/delivery.png">
             <h2>TU <span class="danger">DELIVERY</span> </h2>
         </div>
         <div class="close" id="close-btn">
@@ -12,13 +12,13 @@
 
     <div class="sidebar">
         <!-- averiguar como agregar la clase active a un boton cuando se hace click -->
-        <a href="../administrador/dashboard.php" target="myFrame">
+        <a href="dashboard.php" target="myFrame">
             <span class="material-symbols-sharp">
                 space_dashboard
             </span>
             <h3>DASHBOARD</h3>
         </a>
-        <a href="../administrador/pedidos.php" target="myFrame">
+        <a href="pedidos.php" target="myFrame">
             <span class="material-symbols-sharp">
                 person_outline
             </span>
@@ -48,7 +48,7 @@
             </span>
             <h3>Reportes</h3>
         </a>
-        <a href="../administrador/ajustes.php" target="myFrame">
+        <a href="ajustes.php" target="myFrame">
             <span class="material-symbols-sharp">
                 settings
             </span>
@@ -67,7 +67,7 @@
             </span>
             <h3>Agregar Producto</h3>
         </a>
-        <a href="">
+        <a href="../">
             <span class="material-symbols-sharp">
                 logout
             </span>
