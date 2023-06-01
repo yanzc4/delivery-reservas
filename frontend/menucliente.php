@@ -73,7 +73,7 @@
 
         <div class="bottom-content">
             <li class="">
-                <a href="backend/salir.php">
+                <a href="../">
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Salir</span>
                 </a>

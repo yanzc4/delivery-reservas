@@ -17,6 +17,17 @@
             padding: 0;
         }
 
+        .btn-transparente {
+            border: none;
+            background-color: transparent;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
         .bg-b {
             background: var(--color-white);
             color: var(--text-color);
@@ -141,12 +152,15 @@
             text-decoration: none !important;
         }
 
-        .nav-link:hover, .nav-link:focus, .nav-link:active {
+        .nav-link:hover,
+        .nav-link:focus,
+        .nav-link:active {
             color: var(--text-color) !important;
         }
 
         .form-control:focus {
-            border-color: var(--primary-color);
+            outline: none !important;
+            border-color: var(--primary-color) !important;
             box-shadow: 0 0 0 0.25rem rgb(249 119 119 / 25%);
         }
 
@@ -162,6 +176,23 @@
             color: #fff;
             display: flex;
             align-items: center;
+        }
+
+        .btn-login {
+            background: #F97777 !important;
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background: #F97777 !important;
+            color: #fff;
+            transform: scale(1.07);
+        }
+
+        .btn-navbar-toggler {
+            display: none;
+            border: none;
+            background: transparent;
         }
 
         @media (min-width: 1024px) {
@@ -183,6 +214,10 @@
                 margin: auto;
                 width: 93.95%;
             }
+
+            .btn-navbar-toggler {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -195,7 +230,7 @@
                 <img src="assets/img/delivery.png" width="45" height="45" class="d-inline-block align-text-top" alt="">
             </a>
             <label class="text-center fw-bold" for="">Delivery</label>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="btn-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class='bx bx-grid-alt text-rosa fs-1'></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -349,6 +384,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="assets/js/menu/activarDarkmode.js"></script>
+    <script>
+        var input = document.getElementById('celular');
+        input.addEventListener('input', function() {
+            if (this.value.length > 9)
+                this.value = this.value.slice(0, 9);
+        })
+    </script>
 </body>
 
 </html>
