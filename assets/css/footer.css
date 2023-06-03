@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+body{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.contenedor2 {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contenedor2 ul {
+    list-style: none;
+}
+
+.footer2 {
+    background-color: #24262b;
+    padding: 70px 0;
+}
+
+.footer-colum2 {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-colum2 h4 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-colum2 h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #F97777;
+    height: 2px;
+    width: 50px;
+    box-sizing: border-box;
+}
+
+.footer-colum2 ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer-colum2 ul li a {
+    color: #bbbbbb;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.footer-colum2 ul li a:hover {
+    color: #ffffff;
+    padding-left: 10px;
+}
+
+.footer-colum2 .social-links2 a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.footer-colum2 .social-links2 a:hover {
+    background-color: #F97777;
+    color: #ffffff;
+}
+
+
+/* responsive */
+
+@media screen and (max-width: 767px) {
+    .footer-colum2 {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 574px) {
+    .footer-colum2 {
+        width: 100%;
+    }
+}
+
+/* Path: assets\css\footer_estilos.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');

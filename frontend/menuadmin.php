@@ -61,11 +61,11 @@
             <h3>Mensajes</h3>
             <span class="message-count">28</span>
         </a>
-        <a href="" target="myFrame">
+        <a href="crudPlatos.php" target="myFrame">
             <span class="material-symbols-sharp">
                 add
             </span>
-            <h3>Agregar Producto</h3>
+            <h3>Agregar Plato</h3>
         </a>
         <a href="../">
             <span class="material-symbols-sharp">

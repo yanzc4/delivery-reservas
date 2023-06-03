@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/css/cliente/cabecera.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <title>Delivery</title>
     <style>
         * {
@@ -339,6 +340,7 @@
         <?php require_once('frontend/clienteLogin.php') ?>
 
     </div>
+    <?php require_once('frontend/footer.php') ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
