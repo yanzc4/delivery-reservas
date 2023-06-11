@@ -130,12 +130,14 @@ $cabecera = "Delivery";
 
         <?php require_once('../backend/clientes/buscarPlatos.php') ?>
 
+        <!-- Carrito
         <div class="carrito">
             <a href="pedidos.php" target="myFrame" class="pagar">
                 <span class="material-symbols-outlined">shopping_cart</span>
             </a>
             <span class="contador">+1</span>
         </div>
+-->
 
     </div>
 
