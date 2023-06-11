@@ -69,8 +69,12 @@ $id = 5;
         });
 
 
+        L.marker([-11.760893594725457, -77.05023098873214], {
+            icon: clienteIcon
+        }).addTo(map).bindPopup("Erica Gonzales");
         // select u.id, ub.lat, ub.lng, concat(u.nombre,' ',u.apellido) from usuario u join ubicacion ub on u.id=ub.id;
         <?php
+        /*
         require_once "../../inc/conexion.php";
         $con=conectar();
         $sql="select ub.id, ub.lat, ub.lng, concat(c.nombre,' ',c.apellido) from ubicacion ub join clientes c on ub.id=c.id where ub.repartidor=$id";
@@ -79,6 +83,7 @@ $id = 5;
         while($fila=mysqli_fetch_row($resultado)){
             echo "L.marker([".$fila[1].", ".$fila[2]."], {icon: clienteIcon}).addTo(map).bindPopup('".$fila[3]."');";
         }
+        */
         ?>
         
         //L.marker([-11.833885978707777, -77.11822736100126], {icon: greenIcon}).addTo(map).bindPopup("Soy un cliente");
@@ -97,7 +102,7 @@ $id = 5;
             }
             // Removes any existing marker and circule (new ones about to be set)
 
-            marker = L.marker([lat, lng]).addTo(map).bindPopup("Soy un Marcador");
+            marker = L.marker([lat, lng]).addTo(map).bindPopup("Jose Luis");
             circle = L.circle([lat, lng]).addTo(map);
             // Adds marker to the map and a circle for accuracy
 

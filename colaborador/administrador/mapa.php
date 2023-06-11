@@ -61,10 +61,21 @@ $id = 4;
             iconSize: [38],
         });
 
-        L.marker([-11.863641126812807, -77.07626043157313], {icon: restauranteIcon}).addTo(map).bindPopup("Ubicacion del Restaurante");
+        L.marker([-11.863641126812807, -77.07626043157313], {
+            icon: restauranteIcon
+        }).addTo(map).bindPopup("Ubicacion del Restaurante");
+
+        L.marker([-11.833885978707777, -77.11822736100126], {
+            icon: clienteIcon
+        }).addTo(map).bindPopup("Carlos Moreyra");
+        L.marker([-11.960893594725457, -77.05023098873214], {
+            icon: clienteIcon
+        }).addTo(map).bindPopup("Erica Gonzales");
+
 
         // select u.id, ub.lat, ub.lng, concat(u.nombre,' ',u.apellido) from usuario u join ubicacion ub on u.id=ub.id;
         <?php
+        /*
         require_once "../../inc/conexion.php";
         $con=conectar();
         $sql="select ub.id, ub.lat, ub.lng, concat(c.nombre,' ',c.apellido) from ubicacion ub join clientes c on ub.id=c.id";
@@ -73,7 +84,7 @@ $id = 4;
         while($fila=mysqli_fetch_row($resultado)){
             echo "L.marker([".$fila[1].", ".$fila[2]."], {icon: clienteIcon}).addTo(map).bindPopup('".$fila[3]."');";
         }
-
+        */
 
         //fetch data from json
         $data = file_get_contents('../../database/empleados.json');
@@ -81,11 +92,12 @@ $id = 4;
         $data = json_decode($data);
 
         $index = 0;
-        foreach($data as $row){
-            echo "L.marker([".$row->lat.", ".$row->lng."], {icon: empleadoIcon}).addTo(map).bindPopup('".$row->nombre."');";
+        foreach ($data as $row) {
+            echo "L.marker([" . $row->lat . ", " . $row->lng . "], {icon: empleadoIcon}).addTo(map).bindPopup('" . $row->nombre . "');";
             $index++;
         }
         ?>
+
         function error(err) {
 
             if (err.code === 1) {

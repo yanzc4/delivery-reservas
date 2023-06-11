@@ -18,48 +18,44 @@
             </span>
             <h3>DASHBOARD</h3>
         </a>
-        <a href="pedidos.php" target="myFrame">
-            <span class="material-symbols-sharp">
-                person_outline
-            </span>
-            <h3>Clientes</h3>
-        </a>
         <a href="mapa.php" target="myFrame">
             <span class="material-symbols-sharp">
-                receipt_long
+                map
             </span>
-            <h3>Pedidos</h3>
+            <h3>Monitoreo</h3>
         </a>
-        <a href="#" target="myFrame">
+        <!--
+        <a href="reportes.php" target="myFrame">
             <span class="material-symbols-sharp">
                 leaderboard
             </span>
-            <h3>Estadisticas</h3>
+            <h3>Reportes</h3>
         </a>
-        <a href="" target="myFrame">
+        <a href="inventario.php" target="myFrame">
             <span class="material-symbols-sharp">
                 inventory
             </span>
-            <h3>Productos</h3>
+            <h3>Inventario</h3>
         </a>
-        <a href="" target="myFrame">
+        -->
+        <a href="chat.php" target="myFrame">
             <span class="material-symbols-sharp">
-                report_gmailerrorred
+                textsms
             </span>
-            <h3>Reportes</h3>
+            <h3>Mensajes</h3>
+            <span class="message-count">28</span>
+        </a>
+        <a href="perfil.php" target="myFrame">
+            <span class="material-symbols-sharp">
+                person
+            </span>
+            <h3>Perfil</h3>
         </a>
         <a href="ajustes.php" target="myFrame">
             <span class="material-symbols-sharp">
                 settings
             </span>
             <h3>Ajustes</h3>
-        </a>
-        <a href="" target="myFrame">
-            <span class="material-symbols-sharp">
-                textsms
-            </span>
-            <h3>Mensajes</h3>
-            <span class="message-count">28</span>
         </a>
         <a href="crudPlatos.php" target="myFrame">
             <span class="material-symbols-sharp">
