@@ -36,14 +36,14 @@ $id = 4;
         const map = L.map('map');
         // coordenadas lima -12.039733677889739, -77.03996420518459
 
+        // Establece las coordenadas iniciales y el nivel de zoom
         map.setView([-11.863641126812807, -77.07626043157313], 13);
-        // Sets initial coordinates and zoom level
 
+        // Establece la fuente de datos del mapa y se asocia con el mapa
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
-        // Sets map data source and associates with map
 
         let marker, circle, zoomed;
 
@@ -61,10 +61,13 @@ $id = 4;
             iconSize: [38],
         });
 
+        //marcador del restaurante
         L.marker([-11.863641126812807, -77.07626043157313], {
             icon: restauranteIcon
         }).addTo(map).bindPopup("Ubicacion del Restaurante");
 
+
+        //marcadores de los clientes
         L.marker([-11.833885978707777, -77.11822736100126], {
             icon: clienteIcon
         }).addTo(map).bindPopup("Carlos Moreyra");
@@ -86,9 +89,12 @@ $id = 4;
         }
         */
 
-        //fetch data from json
+
+        //marcador de los empleados con archivo json
+        // obtener datos de json
         $data = file_get_contents('../../database/empleados.json');
-        //decode into php array
+
+        // decodificar en array php
         $data = json_decode($data);
 
         $index = 0;
@@ -98,12 +104,13 @@ $id = 4;
         }
         ?>
 
+        //error para solicitar encender el gps
         function error(err) {
 
             if (err.code === 1) {
-                alert("Dar permiso para acceder a la ubicacion");
+                alert("Encender el GPS");
             } else {
-                alert("No se pudo obtener la ubicacion");
+                alert("Error al encender el GPS");
             }
 
         }

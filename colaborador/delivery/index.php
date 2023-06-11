@@ -25,6 +25,7 @@ $id = 5;
 
 
     <script>
+        //funcion   para obtener la ubicacion del motorizado
         function obtenerUbicacion() {
             navigator.geolocation.getCurrentPosition(position => {
                 var lat = position.coords.latitude;
@@ -47,6 +48,7 @@ $id = 5;
 
             });
         }
+        //ejecutamos la funcion luego se automatizara
         obtenerUbicacion();
     </script>
     

@@ -43,14 +43,16 @@ $id = 5;
         const map = L.map('map');
         // coordenadas lima -12.039733677889739, -77.03996420518459
 
-        map.setView([-12.039733677889739, -77.03996420518459], 13);
-        // Sets initial coordinates and zoom level
 
+        // Establece las coordenadas iniciales y el nivel de zoom
+        map.setView([-12.039733677889739, -77.03996420518459], 13);
+
+        // Establece la fuente de datos del mapa y se asocia con el mapa
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
-        // Sets map data source and associates with map
+
 
         let marker, circle, zoomed;
 
@@ -86,7 +88,7 @@ $id = 5;
         }
         */
         ?>
-        
+
         //L.marker([-11.833885978707777, -77.11822736100126], {icon: greenIcon}).addTo(map).bindPopup("Soy un cliente");
 
         navigator.geolocation.watchPosition(success, error);
@@ -97,23 +99,24 @@ $id = 5;
             const lng = pos.coords.longitude;
             const accuracy = pos.coords.accuracy;
 
+            // Elimina cualquier marcador y círculo existentes (nuevos a punto de configurarse)
             if (marker) {
                 map.removeLayer(marker);
                 map.removeLayer(circle);
             }
-            // Removes any existing marker and circule (new ones about to be set)
 
+            //  Agrega un marcador al mapa y un círculo para mayor precisión
             marker = L.marker([lat, lng]).addTo(map).bindPopup("Jose Luis");
             circle = L.circle([lat, lng]).addTo(map);
-            // Adds marker to the map and a circle for accuracy
 
+            // Establecer zoom a los límites del círculo de precisión
             if (!zoomed) {
                 zoomed = map.fitBounds(circle.getBounds());
             }
-            // Set zoom to boundaries of accuracy circle
 
+            // Establecer el enfoque del mapa en la posición actual del usuario
             map.setView([lat, lng]);
-            // Set map focus to current user position
+
 
         }
         //nueoo
@@ -130,6 +133,8 @@ $id = 5;
             map.addLayer(newUserMarker);
         }
         */
+
+        //error para solicitar encender el gps
         function error(err) {
 
             if (err.code === 1) {
