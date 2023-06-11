@@ -69,6 +69,7 @@ $id = 5;
         });
 
 
+        //marcador de la ubicacion de un cliente
         L.marker([-11.760893594725457, -77.05023098873214], {
             icon: clienteIcon
         }).addTo(map).bindPopup("Erica Gonzales");
