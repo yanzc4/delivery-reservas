@@ -205,6 +205,17 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th scope="row">1</th>
+                                <td>Saul</td>
+                                <td>Otto</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
+
+                                    <!-- <button type="button" class="btn btn-warning " id="btn-abrir-modal">Cambiar</button> -->
+                                    <button onclick="eliminacion(2)" class="btn btn-danger"><i class='bx bx-trash-alt'></i></button>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>Thornton</td>

@@ -45,7 +45,7 @@
             <h3>Mensajes</h3>
             <span class="message-count">28</span>
         </a>
-        <a href="perfil.php" target="myFrame">
+        <a href="perfil2.php" target="myFrame">
             <span class="material-symbols-sharp">
                 person
             </span>

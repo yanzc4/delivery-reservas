@@ -12,7 +12,7 @@ $cabecera = "Soporte";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../assets/css/cliente/cabecera.css">
+    <link rel="stylesheet" href="../../assets/css/panel.css">
     <style>
         body {
             overflow: hidden;
@@ -37,7 +37,7 @@ $cabecera = "Soporte";
 
         .cuerpo {
             width: 100%;
-            height: calc(100vh - 210px);
+            height: calc(100vh - 180px);
             overflow-y: scroll;
             padding-top: 1rem;
             padding-bottom: 1rem;
@@ -200,22 +200,15 @@ $cabecera = "Soporte";
             }
 
             .cuerpo {
-                height: calc(100vh - 260px);
+                height: calc(100vh - 200px);
             }
         }
     </style>
 </head>
 
 <body>
-    <?php
-    $user_agent = $_SERVER["HTTP_USER_AGENT"];
-    if (preg_match("/(android|webos|avantgo|iphone|ipod|ipad|bolt|boost|cricket|docomo|fone|hiptop|opera mini|mini|kitkat|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $user_agent)) {
-        require_once "../../frontend/cabeceraColaborador.php";
-    }
-    ?>
     <main>
         <div class="container altura">
-            <h3 class="texto mt-3">Atencion al cliente</h3>
             <div class="titulo">
                 <label for="">ChatBot Boomerang</label>
             </div>
@@ -251,7 +244,7 @@ $cabecera = "Soporte";
             </div>
         </div>
     </main>
-    <script src="../../assets/js/menu/activarDarkmode.js"></script>
+    <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
 </body>
 
 </html>

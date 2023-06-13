@@ -140,7 +140,7 @@
             background: #F97777;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 720px) {
             main {
                 width: 100%;
                 padding-top: 0;

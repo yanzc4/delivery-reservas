@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="perfil.php" target="myFrame">
+                    <a href="perfil2.php" target="myFrame">
                         <i class='bx bx-user icon'></i>
                         <span class="text nav-text">Perfil</span>
                     </a>
