@@ -5,12 +5,12 @@ Sistema de delivery con ubicacion de empleados en realtime, y un sistema de rese
 # Documentación
 
 - Servidor usado AWS
-	>Puertos a Abrir
-	>7800|888|80|443|20|21
+	> Puertos a Abrir
+	> 7800|888|80|443|20|21
 - VPS de ubuntu 20.04
 - aaPanel para la administración del hosting
-	>aaPanel [Download](https://www.aapanel.com/new/download.html)
-	>Comando `wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && sudo bash install.sh aapanel`
+	> aaPanel [Download](https://www.aapanel.com/new/download.html)
+	> Comando `wget -O install.sh http://www.aapanel.com/script/install-ubuntu_6.0_en.sh && sudo bash install.sh aapanel`
 - Marco de trabajo Bootstrap 5
 - Para iconos [Boxicons](https://boxicons.com/)
 - [Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
@@ -21,48 +21,48 @@ Sistema de delivery con ubicacion de empleados en realtime, y un sistema de rese
 
 - assets
 	> css
-	img
-	js (Aqui van las funciones y peticiones ajax)
+	> img
+	> js (Aqui van las funciones y peticiones ajax)
 - backend
 	>empleado (iran las funcionalidades)
 	controller (aqui ira el controlador)
 	model (aqui van las funciones del crud)
 - cliente
 	> chatbot
-	index
-	ofertas
-	pedidos
-	perfil
-	platos
+	> index
+	> ofertas
+	> pedidos
+	> perfil
+	> platos
 - colaborador
 	- administrador
 		> ajustes
-		chat
-		crudPlatos
-		dashboard
-		index
-		inventario
-		mapa
-		perfil
-		reportes
+		> chat
+		> crudPlatos
+		> dashboard
+		> index
+		> inventario
+		> mapa
+		> perfil
+		> reportes
 	- delivery
 		> chat
-		index
-		mapa
-		pedidos
-		perfil
+		> index
+		> mapa
+		> pedidos
+		> perfil
 	- monitoreo
 		>chat
-		index
-		mapa
-		pedidos
-		perfil
+		> index
+		> mapa
+		> pedidos
+		> perfil
 	- index
 - database (scrip de base de datos)
 - frontend (componentes como el menu y cabeceras)
 - inc (configuracion y conexion a la base de datos)
-	>conexion.php
-	config.php
+	> conexion.php
+	> config.php
 - .htaccess (archivo de configuracion del servidor)
 - index.php (archivo principal del sistema)
 
