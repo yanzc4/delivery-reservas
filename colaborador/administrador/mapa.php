@@ -19,7 +19,59 @@ $id = 4;
         body {
             margin: 0;
             padding: 0;
-        }
+            min-height: 100vh;
+    font-family: 'Inconsolata', monospace;
+}
+
+details{
+    position: fixed;
+    right: 1rem;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    border: 3px solid transparent;
+    border-radius: 7px;
+    background-color: rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px black;
+    height: 8vh;
+}
+.toggle{
+    height: 70vh;
+}
+
+summary{
+    font-size: 30px;
+    letter-spacing: 1px;
+    list-style: none;
+    cursor: pointer;
+}
+
+summary::before{
+    content: '+';
+    margin-right: .5rem;
+}
+
+details[open] summary::before{
+    content: '-';
+}
+
+.container{
+    background-color: white;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 2rem;
+}
+
+p{
+    margin: 1rem 0 1rem 0;
+}
+
+img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
 
         #map {
             width: 100%;
@@ -29,6 +81,26 @@ $id = 4;
 </head>
 
 <body>
+<details id="detalle">
+        <summary id="btnDesplegar">Ver Detalle</summary>
+        <div class="contenido">
+            <h1>Pedido</h1>
+            <p>David Caceres 1 hamburguesa San Martin
+                de Porres cuadra 5.
+            </p>
+            <img src="img/pedido.jpg" alt="">
+        </div>
+    </details>
+    <script>
+        var btnDesplegar = document.getElementById("btnDesplegar");
+        var caja = document.getElementById("detalle");
+
+        function desplegar(){
+            caja.classList.toggle("toggle");
+        }
+
+        btnDesplegar.addEventListener("click", desplegar);
+    </script>
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
