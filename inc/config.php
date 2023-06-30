@@ -1,7 +1,7 @@
 <?php
 //Datos de configuracion de la base de datos
-$servidor = "localhost:3307";
+$servidor = "localhost";
 $usuario = "root";
-$pass = "";
-$bbdd = 'delivery';
+$pass = "123456789";
+$bbdd = 'restaurante';
 ?>

@@ -85,10 +85,11 @@
             color: var(--color-dark-variant);
         }
 
-        .bg-modal{
+        .bg-modal {
             background: var(--color-background);
             color: var(--color-dark-variant);
         }
+
         .text-success {
             color: #F97777 !important;
         }
@@ -97,15 +98,17 @@
             border: none;
             background-color: transparent;
         }
-        
+
         .btn-login {
             background: #F97777 !important;
             color: #fff;
         }
+
         .btn-login:hover {
             background: #F97777 !important;
             color: #fff;
         }
+
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -114,11 +117,11 @@
 
         @media screen and (max-width: 768px) {
             main {
-            width: 100%;
-            padding-top: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
+                width: 100%;
+                padding-top: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     </style>
     <title>Ajustes</title>
@@ -174,70 +177,18 @@
                                 <option value="Empleado">Empleado</option>
                             </select>
                         </div>
+
                         <div class="text-center mt-4">
-                        <button class="btn btn-login w-100" name="btnRegistrarEmpleado" id="btnRegistrarEmpleado">Registrar</button>
+                            <button class="btn btn-login w-100" name="btnRegistrarEmpleado" id="btnRegistrarEmpleado">Registrar</button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-                <div class="container">
-                    <table class="table bg-tabla">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Direcion</th>
-                                <th>Cambios</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tb-tabla">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Saul</td>
-                                <td>Otto</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-
-                                    <!-- <button type="button" class="btn btn-warning " id="btn-abrir-modal">Cambiar</button> -->
-                                    <button onclick="eliminacion(2)" class="btn btn-danger"><i class='bx bx-trash-alt'></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Saul</td>
-                                <td>Otto</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-
-                                    <!-- <button type="button" class="btn btn-warning " id="btn-abrir-modal">Cambiar</button> -->
-                                    <button onclick="eliminacion(2)" class="btn btn-danger"><i class='bx bx-trash-alt'></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-                                    <button onclick="eliminacion(2)" class="btn btn-danger" id="btnEliminarEmpleado"><i class='bx bx-trash-alt'></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>Trujillos</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-                                    <button onclick="eliminacion(2)" class="btn btn-danger"><i class='bx bx-trash-alt'></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <input onkeyup="buscar_ahora($('#buscar_1').val());" type="text" class="form-control bg-transparent text-azul-medio" id="buscar_1" name="buscar_1" placeholder="Buscar cliente">
+                <div class="container" id="tablaUsuario"></div>
             </div>
-        </div>
     </main>
 
     <!-- MODAL CON BOOSTRAP  -->
@@ -251,7 +202,10 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" id="frmActualizarEmpleado">
-                    <div class="row mb-2">
+                        <div class="row mb-2">
+                            
+                                <input class="form-control" type="hidden" id="id" name="txtId" />
+                         
                             <div class="col-6">
                                 <label>Nombre:</label>
                                 <input class="form-control" type="text" id="nombre" name="txtNombre" />
@@ -309,7 +263,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
-    <script src="../../assets/js/administrador/alertas.js"></script>
+    <script src="../../assets/js/administrador/crudUsuarios.js"></script>
 </body>
 
 </html>
