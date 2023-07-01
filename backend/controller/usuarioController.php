@@ -3,6 +3,39 @@ include_once "../model/usuarioModel.php";
 include_once "../../inc/conexion.php";
 
 
+function addUsuario()
+{
+    $conexion = conectar();
+    $datos = array(
+        "user" => $_POST['aUser'],
+        "pass" => $_POST['aPass'],
+        "nombre" => $_POST['aNombre'],
+        "email" => $_POST['aEmail'],
+        "telefono" => $_POST['aCelular'],
+        "f_nacimiento" => $_POST['aNacimiento'],
+        "rol" => $_POST['aCargo'],
+        "direccion" => $_POST['aDireccion']
+    );
+    insertarUsuario($conexion, $datos);
+}
+
+function updateUsuario()
+{
+    $conexion = conectar();
+    $datos = array(
+        "id" => $_POST['txtId'],
+        "user" => $_POST['txtUser'],
+        "pass" => $_POST['password'],
+        "nombre" => $_POST['txtNombre'],
+        "email" => $_POST['email'],
+        "telefono" => $_POST['phoneNumber'],
+        "f_nacimiento" => $_POST['txtFechaNacimineto'],
+        "rol" => $_POST['chkCargo'],
+        "direccion" => $_POST['txtDireccion']
+    );
+    actualizarUsuario($conexion, $datos);
+}
+
 function showUsuario()
 {
     $conexion = conectar();
@@ -15,6 +48,7 @@ function showUsuario()
                 <th>user</th>
                 <th>pass</th>
                 <th>nombre</th>
+                
               
             </tr>
         </thead>
@@ -24,7 +58,12 @@ function showUsuario()
                 $datos = $fila['id'] . "||" .
                     $fila['user'] . "||" .
                     $fila['pass'] . "||" .
-                    $fila['nombre'];
+                    $fila['nombre'] . "||" .
+                    $fila['email'] . "||" .
+                    $fila['telefono'] . "||" .
+                    $fila['f_nacimiento'] . "||" .
+                    $fila['rol'] . "||" .
+                    $fila['direccion'];
                    
 
             ?>
@@ -45,6 +84,15 @@ function showUsuario()
         </tbody>
     </table>
 <?php
+}
+
+
+function deleteUsuario()
+{
+    $conexion = conectar();
+    $id = $_POST['id'];
+    $resultado = eliminarUsuario($conexion, $id);
+    echo $resultado;
 }
 
 if (function_exists($_GET['f'])) {

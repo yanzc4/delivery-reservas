@@ -18,11 +18,11 @@ buscar_ahora("");
 
 //funcion para registrar empleado
 $(document).ready(function () {
-    $("#btnEnviar").click(function () {
-        var datos = $("#frmPrueba").serialize();
+    $("#btnRegistrarEmpleado").click(function () {
+        var datos = $("#frmRegistrarEmpleado").serialize();
         $.ajax({
             type: "POST",
-            url: "backend/controller/empleadoController.php?f=addEmpleado",
+            url: "../../backend/controller/usuarioController.php?f=addUsuario",
             data: datos,
             success: function (e) {
                 Swal.fire("Listo", "¡Empleado registrado con exito!", "success");
@@ -38,19 +38,25 @@ $(document).ready(function () {
 //funcion para llenar modal
 function llenarModal(datos) {
     d = datos.split("||");
-    $("#ide").val(d[0]);
-    $("#enombre").val(d[1]);
-    $("#ecel").val(d[2]);
-    $("#edni").val(d[3]);
+    $("#id").val(d[0]);
+    $("#user").val(d[1]);
+    $("#password").val(d[2]);
+    $("#nombre").val(d[3]);
+    $("#email").val(d[4]);
+    $("#phoneNumber").val(d[5]);
+    $("#fecha_nacimiento").val(d[6]);
+    $("#chkCargo").val(d[7]);
+    $("#direccion").val(d[8]);
+     
 }
 
 //funcion para actualizar
 $(document).ready(function () {
-    $("#btnactualizar").click(function () {
-        var datos = $("#frmActualizar").serialize();
+    $("#btnActualizarEmpleado").click(function () {
+        var datos = $("#frmActualizarEmpleado").serialize();
         $.ajax({
             type: "POST",
-            url: "backend/controller/empleadoController.php?f=updateEmpleado",
+            url: "../../backend/controller/usuarioController.php?f=updateUsuario",
             data: datos,
             success: function (e) {
                 Swal.fire("Listo", "¡Actualizado con exito!", "success");
@@ -85,7 +91,7 @@ function mandar_php(codigo) {
     };
     $.ajax({
         data: parametros,
-        url: "backend/controller/empleadoController.php?f=deleteEmpleado",
+        url: "../../backend/controller/usuarioController.php?f=deleteUsuario",
         type: "POST",
         success: function (r) {
             if (r == 1) {

@@ -187,7 +187,9 @@
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                 <input onkeyup="buscar_ahora($('#buscar_1').val());" type="text" class="form-control bg-transparent text-azul-medio" id="buscar_1" name="buscar_1" placeholder="Buscar cliente">
-                <div class="container" id="tablaUsuario"></div>
+                <div class="container" id="tablaUsuario">
+
+                </div>
             </div>
     </main>
 
@@ -243,7 +245,7 @@
 
                         <div class="mb-2">
                             <label for="">Cargo</label>
-                            <select class="form-select" name="chkCargo" id="">
+                            <select class="form-select" name="chkCargo" id="chkCargo">
                                 <option value="Admin">administrador</option>
                                 <option value="Empleado">empleado</option>
                             </select>
