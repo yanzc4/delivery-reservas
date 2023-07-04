@@ -48,7 +48,7 @@ function showUsuario()
                 <th>user</th>
                 <th>pass</th>
                 <th>nombre</th>
-                
+                <th>Ajustes</th>
               
             </tr>
         </thead>

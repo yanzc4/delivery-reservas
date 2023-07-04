@@ -184,12 +184,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <select class="form-select" name="lsCategoria">
-                                <option value="">Combo</option>
-                                <option value="">Bebida</option>
-                                <option value="">Especiales</option>
-                                <option value="">Salchipapas</option>
-                            </select>
+                            <div id="combo"></div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-6">
@@ -263,34 +258,7 @@
                         <button class="btn btn-success mb-3 w-100" id="btnAgregarCategoria">Agregar</button>
                     </form>
                     <div class="container cuerpo">
-                        <table class="table bg-tabla">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nombre</th>
-                                    <th>Ajustes</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="">
-                                    <td scope="row">1</td>
-                                    <td>Bebidas</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-c"><i class='bx bx-edit-alt'></i></button>
-                                        <button onclick="eCategoria(1)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
-                                    </td>
-
-                                </tr>
-                                <tr class="">
-                                    <td scope="row">2</td>
-                                    <td>Hamburguesas</td>
-                                    <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop-c"><i class='bx bx-edit-alt'></i></button>
-                                        <button onclick="eCategoria(1)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="container" id="tablaCategorias"></div>                     
                     </div>
                 </div>
             </div>
@@ -308,6 +276,7 @@
                 <div class="modal-body">
                     <form method="post" id="frmEditarPlato">
                         <div class="row">
+                        
                             <div class="col-6">
                                 <label class="form-label">Nombre</label>
                                 <input type="text" class="form-control" name="txtNombre">
@@ -350,9 +319,10 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" id="frmEditarCategoria">
+                    <input class="form-control" type="hidden" id="etxtId" name="etxtId" />
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input class="form-control" type="text" name="txtNombreCategoria" id="" placeholder="Nombre de la categoria">
+                            <input class="form-control" type="text" name="etxtNombreCategoria" id="etxtNombreCategoria" placeholder="Nombre de la categoria">
                         </div>
                         <button type="submit" class="btn btn-success w-100 mb-2" id="btnEditarCategoria">Actualizar</button>
                     </form>
@@ -367,6 +337,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
     <script src="../../assets/js/administrador/alertas.js"></script>
+    <script src="../../assets/js/administrador/crudCategoria.js"></script>
 </body>
 
 </html>
