@@ -43,7 +43,7 @@ $id = 5;
                     }
                 }).done(function(response) {
                     // La respuesta de PHP se almacena en la variable 'response'
-                    console.log(response);
+                   console.log(response);
                 });
 
             });

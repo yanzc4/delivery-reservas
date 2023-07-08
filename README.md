@@ -18,6 +18,9 @@ Sistema de delivery con ubicacion de empleados en realtime, y un sistema de rese
 - [Material Symbols and Icons - Google Fonts](https://fonts.google.com/icons)
 - Usamos [Ajax](https://developers.google.com/speed/libraries?hl=es-419) para enviar peticiones al servidor
 - Utilizamos [SweetAlert2](https://sweetalert2.github.io/) para las alertas
+- Utilizamos [Mail Zoho](https://mail.zoho.com/zm/#mail/folder/sent) para el envio de correos para recuperar
+contraseña(es decir lo usamos como servidor SMTP)
+- Utilizamos la libreria de [PHPMailer](https://github.com/PHPMailer/PHPMailer) para poder estructurar el envio de correos
 
 ## Estructura
 

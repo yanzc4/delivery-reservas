@@ -24,6 +24,9 @@
       </div>
       <div class="modal-footer">
         <label for="" class="">Click aqui si eres <a href="colaborador/" class="text-success">colaborador</a></label>
+        <div class="text-center container mt-4">
+          <a href="recuperar.php" class="text-success fz-100">¿Olvidaste tu contraseña?</a>
+        </div>
       </div>
     </div>
   </div>

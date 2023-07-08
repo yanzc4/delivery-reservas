@@ -58,56 +58,115 @@ $id = 5;
             zoomControl: false
         });
 
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
+        //para obtener la ubicacion actual
+        function cargarMapa() {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
 
-            // Agregar ubicación actual como waypoint
-            control.setWaypoints([
-                L.latLng(latitude, longitude),
-                L.latLng(-12.036374, -77.042793),
-                L.latLng(-12.059733677889739, -77.03996420518459)
-            ]);
-        }, error);
-
-        var control = L.Routing.control({
-            
-
-            showAlternatives: true,
-            altLineOptions: {
-                styles: [{
-                        color: 'black',
-                        opacity: 0.15,
-                        weight: 9
-                    },
-                    {
-                        color: 'white',
-                        opacity: 0.8,
-                        weight: 6
-                    },
-                    {
-                        color: 'blue',
-                        opacity: 0.5,
-                        weight: 2
-                    }
-                ]
-            },
-            //cambiar el idioma
-            language: 'es',
-            //desabilitar que se pueda arrastrar el punto de inicio y fin
-            draggableWaypoints: false,
-        }).addTo(map);
-
-
-        function error(err) {
-
-            if (err.code === 1) {
-                alert("Encender el GPS");
-            } else {
-                alert("Error al encender el GPS");
-            }
-
+                // Agregar ubicación actual como waypoint
+                control.setWaypoints([
+                    L.latLng(latitude, longitude),
+                    L.latLng(-12.036374, -77.042793),
+                    L.latLng(-12.059733677889739, -77.03996420518459)
+                ]);
+            }, error);
         }
+
+        cargarMapa();
+        //setInterval(cargarMapa, 10000);
+            //para agregar la ruta
+            var control = L.Routing.control({
+
+                createMarker: function(i, waypoints, n) {
+                    var empleadoIcon = L.icon({
+                        iconUrl: '../../assets/img/empleado.png',
+                        iconSize: [38],
+                    });
+
+                    //para los iconos de los clientes crear un while para leer la ubicacion de cda imagen
+                    var clienteIcon = L.icon({
+                        iconUrl: '../../assets/img/cliente.png',
+                        iconSize: [38],
+                    });
+
+                    //para cambiar el icono
+                    switch (i) {
+                        case 0:
+                            market_icon = empleadoIcon;
+                            info = "Erica Gonzales";
+                            break;
+
+                            //para lo de clientes usar tambien un while
+                        case 1:
+                            market_icon = clienteIcon;
+                            info = "Roberto Carlos";
+                            break;
+                        case 2:
+                            market_icon = clienteIcon;
+                            info = "Julio Cesar";
+                            break;
+                    }
+
+                    //dibujar el icono en el mapa
+                    var marker = L.marker(waypoints.latLng, {
+                        bounceOnAdd: false,
+                        bounceOnAddOptions: {
+                            duration: 1000,
+                        },
+                        icon: market_icon,
+                    }).bindPopup(info);
+                    return marker;
+                },
+
+                showAlternatives: true,
+                altLineOptions: {
+                    styles: [{
+                            color: 'black',
+                            opacity: 0.15,
+                            weight: 9
+                        },
+                        {
+                            color: 'white',
+                            opacity: 0.8,
+                            weight: 6
+                        },
+                        {
+                            color: 'blue',
+                            opacity: 0.5,
+                            weight: 2
+                        }
+                    ]
+                },
+                lineOptions: {
+                    styles: [{
+                        color: 'blue',
+                        opacity: 1,
+                        weight: 5
+                    }]
+                },
+                //cambiar el idioma
+                language: 'es',
+                //desabilitar que se pueda arrastrar el punto de inicio y fin
+                draggableWaypoints: false,
+                //desabilitar que se pueda agregar mas puntos
+                addWaypoints: false,
+
+            }).addTo(map);
+
+            //para cambiar el nombre de los waypoints
+
+
+            function error(err) {
+
+                if (err.code === 1) {
+                    alert("Encender el GPS");
+                } else {
+                    alert("Error al encender el GPS");
+                }
+
+            }
+        
     </script>
 
 

@@ -82,6 +82,10 @@
             opacity: 1;
         }
 
+        .fz-100{
+            font-size: 0.7rem !important;
+        }
+
         .cabecera .swiper-pagination {
             /* Reeditando las clases de la libreria */
             --swiper-pagination-color: white;
