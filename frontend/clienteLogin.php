@@ -40,7 +40,7 @@
       <div class="modal-body">
 
         <!--Aqui va el formulario de registro-->
-        <form method="post">
+        <form method="post" id="frmRegistrarCliente">
           <div class="row mb-2">
             <div class="col-6">
               <label for="user" class="form-label">Usuario</label>
@@ -54,17 +54,17 @@
 
           <div class="mb-2">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
           </div>
           <div class="mb-2">
             <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" name="apellido" placeholder="Apellido">
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
           </div>
 
           <div class="row mb-2">
             <div class="col-6">
               <label for="fechaNacimiento" class="form-label mb-0 w-100 text-truncate">Fecha de Naacimiento</label>
-              <input type="date" class="form-control" name="fechaNacimiento">
+              <input type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
             </div>
             <div class="col-6">
               <label for="celular" class="form-label w-100 mb-0 text-truncate">Celular</label>
@@ -75,7 +75,11 @@
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
           </div>
-          <button type="submit" class="btn btn-login">Registrarse</button>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+          </div>
+          <button  class="btn btn-login" name="btnRegistrarCliente" id="btnRegistrarCliente">Registrarse</button>
         </form>
 
       </div>
@@ -85,3 +89,4 @@
     </div>
   </div>
 </div>
+

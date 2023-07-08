@@ -393,6 +393,9 @@
                 this.value = this.value.slice(0, 9);
         })
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/assets/js/administrador/crudCliente.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
