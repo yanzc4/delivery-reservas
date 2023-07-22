@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+$usuarioCliente = $_SESSION['usuario'];
+
+if (isset($usuarioCliente)) {
+    header("location: cliente");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -82,7 +92,7 @@
             opacity: 1;
         }
 
-        .fz-100{
+        .fz-100 {
             font-size: 0.7rem !important;
         }
 
@@ -341,7 +351,105 @@
         <?php } ?>
 
         <!-- para los modales -->
-        <?php require_once('frontend/clienteLogin.php') ?>
+        <!-- Para Login -->
+        <div class="modal fade" id="frmLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-secundario">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-success" id="exampleModalLabel">Login</h5>
+                        <button type="button" class="text-rosa btn-transparente" data-bs-dismiss="modal" aria-label="Close"><i class='bx bx-x fs-2'></i></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--Aqui va el formulario de login-->
+                        <form method="post" id="frmLoginCliente">
+                            <div class="mb-3">
+                                <label for="loginUser" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="loginUser" name="loginUser" placeholder="Usuario" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Contraseña" required>
+                            </div>
+                            <button id="btnLogin" class="btn btn-login">Iniciar sesión</button>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <label for="" class="">Click aqui si eres <a href="colaborador/" class="text-success">colaborador</a></label>
+                        <div class="text-center container mt-4">
+                            <a href="recuperar.php" class="text-success fz-100">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Para Registro -->
+        <div class="modal fade" id="frmRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-secundario">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-success" id="exampleModalLabel">Registrarte</h5>
+                        <button type="button" class="text-rosa btn-transparente" data-bs-dismiss="modal" aria-label="Close"><i class='bx bx-x fs-2'></i></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!--Aqui va el formulario de registro-->
+                        <form method="post" id="frmRegistrarCliente">
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label for="user" class="form-label">Usuario</label>
+                                    <input type="text" class="form-control" name="user" placeholder="Usuario" required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label for="nombre" class="form-label mb-0 w-100 text-truncate">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="apellido" class="form-label mb-0 w-100 text-truncate">Apellido</label>
+                                    <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo</label>
+                                <input type="email" class="form-control" name="correo" placeholder="correo@gmail.com" required>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <label for="fechaNacimiento" class="form-label mb-0 w-100 text-truncate">Fecha de Naacimiento</label>
+                                    <input type="date" class="form-control" name="fechaNacimiento" required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="celular" class="form-label w-100 mb-0 text-truncate">Celular</label>
+                                    <input type="number" id="celular" class="form-control" name="celular" placeholder="Celular" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" name="direccion" placeholder="Dirección" required>
+                            </div>
+                            <button id="btnRegistrar" class="btn btn-login">Registrarse</button>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <label for="" class="">Click aqui si eres <a href="colaborador/" class="text-success">colaborador</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <?php require_once('frontend/footer.php') ?>
@@ -390,6 +498,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="assets/js/menu/activarDarkmode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/login/clienteFunciones.js"></script>
     <script>
         var input = document.getElementById('celular');
         input.addEventListener('input', function() {

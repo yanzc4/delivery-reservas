@@ -290,6 +290,18 @@ img {
     border: 3px solid #fc6679;
 }
 
+.project-department:nth-child(5):before {
+    border: 3px solid #b36dfb;
+}
+
+.project-department:nth-child(6):before {
+    border: 3px solid #625be8;
+}
+
+.project-department:nth-child(7):before {
+    border: 3px solid #fec267;
+}
+
 .members {
     width: 36px;
     height: 36px;

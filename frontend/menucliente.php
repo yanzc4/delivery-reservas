@@ -7,7 +7,7 @@
 
             <div class="text logo-text">
                 <span class="name">Boomerang</span>
-                <span class="profession">Cliente</span>
+                <span class="profession"><?php echo $nombreCliente ?></span>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
 
                 <li class="nav-link">
                     <a href="pedidos.php" target="myFrame">
-                    <i class='bx bx-food-menu icon'></i>
+                    <i class='bx bx-cart-download icon'></i>
                         <span class="text nav-text">Pedidos</span>
                     </a>
                 </li>

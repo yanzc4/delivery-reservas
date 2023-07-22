@@ -3,5 +3,5 @@
 $servidor = "localhost:3307";
 $usuario = "root";
 $pass = "";
-$bbdd = 'delivery';
+$bbdd = 'prueba';
 ?>

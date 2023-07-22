@@ -1,5 +1,23 @@
 <?php
 $cabecera = "Delivery";
+
+session_start();
+$idCliente=$_SESSION['id'];
+$nombreCliente = $_SESSION['nombre'];
+$apellidoCliente = $_SESSION['apellido'];
+$usuarioCliente = $_SESSION['usuario'];
+$passwordCliente = $_SESSION['password'];
+$correoCliente = $_SESSION['correo'];
+$telefonoCliente = $_SESSION['telefono'];
+$fechaCliente = $_SESSION['fecha'];
+$direccionCliente = $_SESSION['direccion'];
+$imagenCliente = $_SESSION['foto'];
+
+if (!isset($usuarioCliente)) {
+    header("location: ../");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

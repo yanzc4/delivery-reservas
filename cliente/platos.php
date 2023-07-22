@@ -1,5 +1,22 @@
 <?php
 $cabecera = "Delivery";
+
+session_start();
+$idCliente = $_SESSION['id'];
+$nombreCliente = $_SESSION['nombre'];
+$apellidoCliente = $_SESSION['apellido'];
+$usuarioCliente = $_SESSION['usuario'];
+$passwordCliente = $_SESSION['password'];
+$correoCliente = $_SESSION['correo'];
+$telefonoCliente = $_SESSION['telefono'];
+$fechaCliente = $_SESSION['fecha'];
+$direccionCliente = $_SESSION['direccion'];
+$imagenCliente = $_SESSION['foto'];
+
+if (!isset($usuarioCliente)) {
+    header("location: ../");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,15 +29,33 @@ $cabecera = "Delivery";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../assets/css/cliente/cabecera.css">
     <style>
         .detalleImagen {
-            width: 50%;
+            width: 100%;
+            height: 20vh;
+            object-fit: cover;
+            filter: brightness(0.6);
         }
 
         .btn-transparente {
             border: none;
             background: transparent;
+        }
+        .bg-modal1{
+            background: var(--body-color);
+        }
+        .btnTexto2{
+            display: none;
+        }
+        @media screen and (max-width: 768px) {
+            .btnTexto1{
+                display: none;
+            }
+            .btnTexto2{
+                display: block;
+            }
         }
     </style>
 </head>
@@ -48,7 +83,7 @@ $cabecera = "Delivery";
 
         <span>
             <i class='bx bx-map-pin'></i>
-            <label>Mz H Lote 5 Av Las Palmeras</label>
+            <label><?php echo $direccionCliente ?></label>
         </span>
 
         <div class="container-fluid mt-3">
@@ -128,7 +163,56 @@ $cabecera = "Delivery";
             </div>
         </div>
 
-        <?php require_once('../backend/clientes/buscarPlatos.php') ?>
+
+        <div id="categoriasLista"></div>
+
+        <!-- modal -->
+        <div class="modal fade" id="detalle">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-modal1">
+                        <button type="button" class="text-rosa btn-transparente" data-bs-dismiss="modal" aria-label="Close">
+                            <span class="material-symbols-outlined">arrow_back_ios</span>
+                        </button>
+                        <div class="container fw-bold text-rosa text-center" id="moPlato"></div>
+                        <div class="container w-25 text-end">
+                            <button type="button" class="text-rosa btn-transparente">
+                                <span class="material-symbols-outlined">favorite</span>
+                            </button>
+                        </div>
+                        <div>
+                            <button type="button" class="text-rosa btn-transparente">
+                                <span class="material-symbols-outlined">share</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="text-center container m-0 p-0 bg-dark">
+                            <img class="detalleImagen" id="moImagen" alt="">
+                        </div>
+                        <div class="container bg-modal1">
+                            <div class="container p-3">
+                                <div id="moDescripcion"></div>
+                            </div>
+                            <div class="container pb-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="fs-5 fw-bold text-precio" id="moPrecio"></div>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <form method="post">
+                                            <input type="hidden" name="moaId" id="moaId">
+                                            <input type="hidden" name="moaPrecio" id="moaPrecio">
+                                        <button class="btn bg-rosa text-light w-100"><label for="" class="btnTexto1">Agregar a carrito</label><label for="" class="btnTexto2"><i class='bx bx-cart-add'></i></label></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Carrito
         <div class="carrito">
@@ -159,6 +243,9 @@ $cabecera = "Delivery";
         });
     </script>
     <script src="../assets/js/menu/activarDarkmode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../assets/js/controladores/platosFunciones.js"></script>
 
 </body>
 
