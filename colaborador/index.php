@@ -1,22 +1,16 @@
 <?php
-
-//para simular el login con roles por ahora
-if ($_POST) {
-    $user = $_POST['usuario'];
-}
-
-switch ($user) {
-    case 'admin':
-        header('Location: administrador/');
-        break;
-    case 'delivery':
-        header('Location: delivery/');
-        break;
-    case 'monitoreo':
-        header('Location: monitoreo/');
-        break;
-}
-
+//para la base de datos
+require 'conexion.php';
+sleep(2);
+$usuarios= $mysqli->query("SELECT user, pass 
+FROM usarios WHERE usuario= '".$_POST['usariolg']."'AND password= '".$_POST['passlg']."'");
+if($usuarios->num_rows == 1);
+    $datos = $usuarios->fetch_assoc();
+    echo json_encode(array('error' => false, 'tipo' => $datos['pass']));
+else:
+    echo json_encode(array('error' => true));
+endif;
+$mysqli->close();
 ?>
 
 <!doctype html>
