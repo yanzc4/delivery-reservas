@@ -25,7 +25,7 @@
             <h3>Monitoreo</h3>
         </a>
         
-        <a href="" target="myFrame">
+        <a href="reportes.php" target="myFrame">
             <span class="material-symbols-sharp">
                 leaderboard
             </span>
