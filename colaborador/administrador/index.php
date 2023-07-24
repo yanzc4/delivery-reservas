@@ -1,5 +1,26 @@
 <?php
 $cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuario'];
+$passwordColaborador = $_SESSION['password'];
+$rolColaborador = $_SESSION['rol'];
+$idColaborador = $_SESSION['id'];
+$nombreColaborador = $_SESSION['nombre'];
+$emailColaborador = $_SESSION['email'];
+$telefonoColaborador = $_SESSION['telefono'];
+$f_nacimientoColaborador = $_SESSION['f_nacimiento'];
+$imagenColaborador = $_SESSION['imagen'];
+$direccionColaborador = $_SESSION['direccion'];
+$estadoColaborador = $_SESSION['estado'];
+
+if ($rolColaborador == "Delivery") {
+    header("location: delivery");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: monitoreo");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

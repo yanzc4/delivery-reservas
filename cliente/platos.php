@@ -190,7 +190,7 @@ if (!isset($usuarioCliente)) {
                         <div class="text-center container m-0 p-0 bg-dark">
                             <img class="detalleImagen" id="moImagen" alt="">
                         </div>
-                        <div class="container bg-modal1">
+                        <div class="container bg-modal1 redondear">
                             <div class="container p-3">
                                 <div id="moDescripcion"></div>
                             </div>
@@ -200,10 +200,11 @@ if (!isset($usuarioCliente)) {
                                         <div class="fs-5 fw-bold text-precio" id="moPrecio"></div>
                                     </div>
                                     <div class="col-6 text-end">
-                                        <form method="post">
-                                            <input type="hidden" name="moaId" id="moaId">
-                                            <input type="hidden" name="moaPrecio" id="moaPrecio">
-                                        <button class="btn bg-rosa text-light w-100"><label for="" class="btnTexto1">Agregar a carrito</label><label for="" class="btnTexto2"><i class='bx bx-cart-add'></i></label></button>
+                                        <form method="post" id="frmCarrito">
+                                            <input type="hidden" name="idc" value="<?php echo $idCliente ?>">
+                                            <input type="hidden" name="idp" id="moaId">
+                                            <input type="hidden" name="precio" id="moaPrecio">
+                                        <button id="btnAgrearDesdeModal" class="btn bg-rosa text-light w-100"><label for="" class="btnTexto1">Agregar a carrito</label><label for="" class="btnTexto2"><i class='bx bx-cart-add'></i></label></button>
                                         </form>
                                     </div>
                                 </div>
@@ -241,6 +242,8 @@ if (!isset($usuarioCliente)) {
                 next: '.glider-next'
             }
         });
+
+        const id_cliente = <?php echo $idCliente ?>;
     </script>
     <script src="../assets/js/menu/activarDarkmode.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

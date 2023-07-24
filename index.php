@@ -210,6 +210,16 @@ if (isset($usuarioCliente)) {
             background: transparent;
         }
 
+        .f-texto2{
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            /* Número de líneas */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.4;
+        }
+
         @media (min-width: 1024px) {
             .imagen {
                 height: 340px;
@@ -273,23 +283,8 @@ if (isset($usuarioCliente)) {
     <div class="mb-4">
         <section class="cabecera mt-2">
             <div class="swiper" id="banner">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper" id="contenedorBanner">
                     <!-- para colocar elementos del slider -->
-                    <div class="swiper-slide">
-                        <img class="imagen2" src="assets/img/banner-hamburgesa.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="imagen2" src="assets/img/banner-hamburgesa.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="imagen2" src="assets/img/banner-hamburgesa.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="imagen2" src="assets/img/banner-hamburgesa.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="imagen2" src="assets/img/banner-hamburgesa.png" alt="">
-                    </div>
                 </div>
                 <!-- para la paginacion del slider (los puntitos) -->
                 <div class="swiper-pagination"></div>
@@ -304,26 +299,8 @@ if (isset($usuarioCliente)) {
         <section id="oferta" class="pt-3 mt-4 pb-3">
 
             <div class="swiper" id="ofertas">
-                <div class="swiper-wrapper mb-3">
+                <div class="swiper-wrapper mb-3" id="contenedorOfertas">
                     <!-- para elementos del slider que mostraran algunos productos -->
-                    <?php for ($i = 1; $i <= 8; $i++) { ?>
-                        <div class="swiper-slide tarjeta redondear bg-b">
-                            <div class="container">
-                                <img class="img-card" src="assets/img/hamburguesa.webp" alt="">
-                                <hr>
-                                <div>
-                                    <label class="fw-bold" for="">S./ 20.00</label>
-                                    <label class="text-success fs-8" for="">22% OFF</label>
-                                </div>
-                                <div>
-                                    <label class="text-success" for="">ENVIO GRATIS</label>
-                                </div>
-                                <div>
-                                    <p>Rica hamburguesa de carne hecha en plancha bañada en aceite de oliva</p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
                 </div>
                 <!-- para las flechistas que permiten avanzar y retroceder el slider -->
                 <div class="swiper-button-prev"></div>
@@ -333,22 +310,7 @@ if (isset($usuarioCliente)) {
         </section>
 
         <!-- para la seccion de ofertas del dia -->
-        <?php for ($i = 1; $i <= 3; $i++) { ?>
-            <div class="container mb-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <img src="assets/img/anticucho.jpg" class="img-card" alt="">
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
-                        <div class="p-3">
-                            <p>OFERTAS DEL DIA</p>
-                            <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
-                            <p>Ver Más ...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
+        <div id="contenedorOfertas2"></div>
 
         <!-- para los modales -->
         <!-- Para Login -->
@@ -454,6 +416,9 @@ if (isset($usuarioCliente)) {
     </div>
     <?php require_once('frontend/footer.php') ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/js/login/clienteFunciones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         const banner = new Swiper('#banner', {
@@ -498,9 +463,6 @@ if (isset($usuarioCliente)) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="assets/js/menu/activarDarkmode.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="assets/js/login/clienteFunciones.js"></script>
     <script>
         var input = document.getElementById('celular');
         input.addEventListener('input', function() {

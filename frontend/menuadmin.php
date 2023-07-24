@@ -24,20 +24,20 @@
             </span>
             <h3>Monitoreo</h3>
         </a>
-        <!--
-        <a href="reportes.php" target="myFrame">
+        
+        <a href="" target="myFrame">
             <span class="material-symbols-sharp">
                 leaderboard
             </span>
             <h3>Reportes</h3>
         </a>
-        <a href="inventario.php" target="myFrame">
+        <!-- <a href="inventario.php" target="myFrame">
             <span class="material-symbols-sharp">
                 inventory
             </span>
             <h3>Inventario</h3>
-        </a>
-        -->
+        </a> -->
+        
         <a href="chat.php" target="myFrame">
             <span class="material-symbols-sharp">
                 textsms

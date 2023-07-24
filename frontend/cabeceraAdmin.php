@@ -15,8 +15,8 @@
         </div>
         <div class="profile">
             <div class="info">
-                <p>Hola <b>Admin</b></p>
-                <small class="text-muted">Admin</small>
+                <p>Hola <b><?php echo $nombreColaborador ?></b></p>
+                <small class="text-muted"><?php echo $nombreColaborador ?></small>
             </div>
         </div>
     </div>

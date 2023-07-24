@@ -60,7 +60,7 @@ function showPlatosCliente()
                                             </span>
                                         </div>
                                         <div class="col-4 text-end">
-                                        <button class="btn bg-rosa text-light"><i class='bx bx-cart-add'></i></button>
+                                            <button onclick="agregarProducto(<?php echo $dato['id'] ?>, <?php echo $dato['precio'] ?>)" class="btn bg-rosa text-light"><i class='bx bx-cart-add'></i></button>
                                         </div>
                                     </div>
                                     <label for="" class="text-precio fw-bold">S/ <?php echo $dato['precio'] ?></label>
@@ -87,11 +87,143 @@ function showPlatosCliente()
     cargaPlatos("Parrillas", $datos, "parrillas");
     cargaPlatos("Caldo", $datos, "caldo");
     ?>
-<?php
+    <?php
 
 }
 
+function showPlatosSlider()
+{
+    $conexion = conectar();
+    $resultado = llenarSlider($conexion);
 
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="swiper-slide tarjeta redondear bg-b">
+            <div class="container">
+                <img class="img-card" src="../<?php echo $fila['imagen'] ?>" alt="">
+                <hr>
+                <div>
+                    <label class="fw-bold" for="">S./ <?php echo $fila['precio'] ?></label>
+                    <label class="text-success fs-8" for="">22% OFF</label>
+                </div>
+                <div>
+                    <label class="text-success" for="">ENVIO GRATIS</label>
+                </div>
+                <div>
+                    <p class="f-texto2"><?php echo $fila['descripcion'] ?></p>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+}
+
+function showPlatosBanner()
+{
+    $conexion = conectar();
+    $resultado = llenarBanner($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="swiper-slide">
+            <img class="imagen2" src="../<?php echo $fila['imagen'] ?>" alt="">
+        </div>
+    <?php
+    }
+}
+
+function showOfertas()
+{
+    $conexion = conectar();
+    $resultado = llenarOfertas($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="container mb-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <img src="../<?php echo $fila['imagen'] ?>" class="img-card" alt="">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
+                        <div class="p-3">
+                            <p>OFERTAS DEL DIA</p>
+                            <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
+                            <a href="platos.php" target="myFrame">Ver Más ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php
+    }
+}
+
+
+//para llenar los slider dinamicamente desde el index
+function showPlatosSlider2()
+{
+    $conexion = conectar();
+    $resultado = llenarSlider($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="swiper-slide tarjeta redondear bg-b">
+            <div class="container">
+                <img class="img-card" src="<?php echo $fila['imagen'] ?>" alt="">
+                <hr>
+                <div>
+                    <label class="fw-bold" for="">S./ <?php echo $fila['precio'] ?></label>
+                    <label class="text-success fs-8" for="">22% OFF</label>
+                </div>
+                <div>
+                    <label class="text-success" for="">ENVIO GRATIS</label>
+                </div>
+                <div>
+                    <p class="f-texto2"><?php echo $fila['descripcion'] ?></p>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+}
+
+function showPlatosBanner2()
+{
+    $conexion = conectar();
+    $resultado = llenarBanner($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="swiper-slide">
+            <img class="imagen2" src="<?php echo $fila['imagen'] ?>" alt="">
+        </div>
+    <?php
+    }
+}
+
+function showOfertas2()
+{
+    $conexion = conectar();
+    $resultado = llenarOfertas($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+    ?>
+        <div class="container mb-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <img src="<?php echo $fila['imagen'] ?>" class="img-card" alt="">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
+                        <div class="p-3">
+                            <p>OFERTAS DEL DIA</p>
+                            <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
+                            <a href="platos.php" target="myFrame">Ver Más ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<?php
+    }
+}
 
 if (function_exists($_GET['f'])) {
     $_GET['f'](); //llama la función si es que existe

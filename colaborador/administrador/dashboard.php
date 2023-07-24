@@ -1,115 +1,266 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/panel.css">
-    <title>Administrador</title>
+<link rel="stylesheet" href="../../assets/css/panel.css">
+    <title>Gráficos de Tablas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            flex-basis: calc(50% - 20px);
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .product {
+            flex-basis: 20%;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .product-count {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-    <main>
-        <h1>DASHBOARD</h1>
+    <h1 class="pb-2">Dashboard</h1>
 
-        <div class="date">
-            <input type="date">
-        </div>
-
-        <div class="insights">
-            <div class="sales">
-                <span class="material-symbols-sharp">
-                    analytics
-                </span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Ventas Totales</h3>
-                        <h2>$ 1000</h2>
-                    </div>
-                    <div class="progress">
-                        <svg>
-                            <circle cx='38' cy='38' r='36'></circle>
-                        </svg>
-                        <div class="number">
-                            <p>81%</p>
-                        </div>
-                    </div>
-                </div>
-                <small class="text-muted">
-                    Ultimas 24 horas
-                </small>
-            </div>
-            <!-- Sales -->
-            <div class="expenses">
-                <span class="material-symbols-sharp">
-                    bar_chart
-                </span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Gastos totales</h3>
-                        <h2>$ 105,24</h2>
-                    </div>
-                    <div class="progress">
-                        <svg>
-                            <circle cx='38' cy='38' r='36'></circle>
-                        </svg>
-                        <div class="number">
-                            <p>61%</p>
-                        </div>
-                    </div>
-                </div>
-                <small class="text-muted">
-                    Ultimas 24 horas
-                </small>
-            </div>
-            <!-- Expensive -->
-            <div class="income">
-                <span class="material-symbols-sharp">
-                    stacked_line_chart
-                </span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Total de ingreso</h3>
-                        <h2>$ 18111,00</h2>
-                    </div>
-                    <div class="progress">
-                        <svg>
-                            <circle cx='38' cy='38' r='36'></circle>
-                        </svg>
-                        <div class="number">
-                            <p>41%</p>
-                        </div>
-                    </div>
-                </div>
-                <small class="text-muted">
-                    Ultimas 24 horas
-                </small>
-            </div>
-            <!-- Income  -->
-        </div>
-
-        <div class="recent-orders">
-            <h2>Ordenes recientes</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre Pedido</th>
-                        <th>Numero Pedido</th>
-                        <th>Pago</th>
-                        <th>Estado</th>
-                        <th></th>
-                    </tr>
-                </thead>
-
-            </table>
-            <a href="#">Mostrar Todos</a>
-        </div>
-    </main>
+    <?php
+    // Conexión a la base de datos
+    include_once('../../inc/conexion.php');
+    $conecta= conectar();
     
-    <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
-</body>
 
+    // Mapeo de nombres de meses en inglés a español
+$mesesEn = array(
+    'January' => 'Enero',
+    'February' => 'Febrero',
+    'March' => 'Marzo',
+    'April' => 'Abril',
+    'May' => 'Mayo',
+    'June' => 'Junio',
+    'July' => 'Julio',
+    'August' => 'Agosto',
+    'September' => 'Septiembre',
+    'October' => 'Octubre',
+    'November' => 'Noviembre',
+    'December' => 'Diciembre'
+);
+// Mapeo de nombres de días en inglés a español
+$diasEn = array(
+    'Sunday' => 'Domingo',
+    'Monday' => 'Lunes',
+    'Tuesday' => 'Martes',
+    'Wednesday' => 'Miércoles',
+    'Thursday' => 'Jueves',
+    'Friday' => 'Viernes',
+    'Saturday' => 'Sábado'
+);
+// Consulta para obtener la cantidad de datos por día de la semana
+$queryDatosPorDia = mysqli_query($conecta, "SELECT DAYNAME(fecha) AS dia, COUNT(*) AS cantidad FROM pedidos GROUP BY DAYOFWEEK(fecha)");
+
+$labelsDia = array();
+$dataDia = array();
+
+while ($row = mysqli_fetch_assoc($queryDatosPorDia)) {
+    $dia = $diasEn[$row['dia']]; // Obtener nombre del día en español
+    $labelsDia[] = $dia;
+    $dataDia[] = $row['cantidad'];
+}
+// Consulta para obtener las ventas por mes
+$queryVentasMes = mysqli_query($conecta, "SELECT MONTHNAME(fecha) AS mes, COUNT(*) AS cantidad FROM pedidos GROUP BY MONTH(fecha)");
+
+$labelsMes = array();
+$dataMes = array();
+
+while ($row = mysqli_fetch_assoc($queryVentasMes)) {
+    $mes = $mesesEn[$row['mes']]; // Obtener nombre del mes en español
+    $labelsMes[] = $mes;
+    $dataMes[] = $row['cantidad'];
+}
+
+
+    // Consulta para obtener los productos más vendidos
+    $queryMasVendidos = mysqli_query($conecta, "SELECT p.nombre, p.imagen, COUNT(*) AS total FROM productos p INNER JOIN detallepedido d ON p.id = d.id_producto GROUP BY p.id ORDER BY total DESC LIMIT 4");
+    
+     //consulta para los top 5 de productos mas vendidos
+     $queryTotal = mysqli_query($conecta, "SELECT p.nombre, COUNT(*) AS total FROM productos p INNER JOIN detallepedido d ON p.id = d.id_producto GROUP BY p.id ORDER BY total DESC LIMIT 5");
+
+     $labelNombre = array();
+     $dataTotal = array();
+ 
+     while ($row = mysqli_fetch_assoc($queryTotal)) {
+         $labelNombre[] = $row['nombre'];
+         $dataTotal[] = $row['total'];
+     }
+    
+    ?>
+
+        <div class="card-container">
+        <div class="card">
+            <div class="card-header">Ventas de la semana</div>
+            <div class="chart-container">
+                <canvas id="chartDia" width="100" height="100"></canvas>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Ventas por Mes</div>
+            <div class="chart-container">
+                <canvas id="chartVentasMes" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container">
+    <div class="card">
+        <div class="card-header">Top 5 Productos Mas vendidos</div>
+        <div class="chart-container">
+            <canvas id="chartProducMasVendido" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Productos más vendidos</div>
+        <div class="chart-container">
+            <div class="product-grid">
+                <?php
+                while ($row = mysqli_fetch_assoc($queryMasVendidos)) {
+                    echo "<div class='product'>";
+                    echo "<img src='../../" . $row['imagen'] . "' alt='Producto' class='product-image'>";
+                    echo "<span class='product-name'>" . $row['nombre'] . "</span>";
+                    echo "<span class='product-count'>Veces vendido: " . $row['total'] . "</span>";
+                    echo "</div>";
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        var ctxDia = document.getElementById('chartDia').getContext('2d');
+        var myChartDia = new Chart(ctxDia, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($labelsDia); ?>,
+                datasets: [{
+                    label: 'Ventas por Día de la Semana',
+                    data: <?php echo json_encode($dataDia); ?>,
+                    backgroundColor: 'rgba(240, 128, 128, 1)',
+                    borderColor: 'rgba(139, 0, 0, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctxVentasMes = document.getElementById('chartVentasMes').getContext('2d');
+        var myChartVentasMes = new Chart(ctxVentasMes, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode($labelsMes); ?>,
+                datasets: [{
+                    label: 'Ventas por Mes',
+                    data: <?php echo json_encode($dataMes); ?>,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(32, 178, 170, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+        var productoMasVendido = document.getElementById('chartProducMasVendido').getContext('2d');
+        var chartProducto = new Chart(productoMasVendido, {
+            type: 'doughnut',
+            data: {
+                labels: <?php echo json_encode($labelNombre); ?>,
+                datasets: [{
+                    label: 'TOP 5 Productos',
+                    data: <?php echo json_encode($dataTotal); ?>,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(153, 102, 255)'
+                    ],
+                    hoverOffset: 4,
+                    borderColor: 'rgba(32, 178, 170, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+     <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
+</body>
 </html>
+
+    
+   
+    
+

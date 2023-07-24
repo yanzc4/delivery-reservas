@@ -66,7 +66,7 @@
 
         <div class="bottom-content">
             <li class="">
-                <a href="../">
+                <a href="../../backend/controller/cerrarSesionEmpledo.php">
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Salir</span>
                 </a>

@@ -43,3 +43,5 @@ if (localStorage.getItem('dark-mode') === 'true') {
     body.classList.remove('dark');
     modeText.innerText = "Dark mode";
 }
+
+

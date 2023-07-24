@@ -1,21 +1,17 @@
 <?php
 
-//para simular el login con roles por ahora
-if ($_POST) {
-    $user = $_POST['usuario'];
+session_start();
+$usuarioColaborador = $_SESSION['usuario'];
+$rolColaborador = $_SESSION['rol'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: administrador");
+} elseif ($rolColaborador == "Delivery") {
+    header("location: delivery");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: monitoreo");
 }
 
-switch ($user) {
-    case 'admin':
-        header('Location: administrador/');
-        break;
-    case 'delivery':
-        header('Location: delivery/');
-        break;
-    case 'monitoreo':
-        header('Location: monitoreo/');
-        break;
-}
 
 ?>
 
@@ -295,28 +291,29 @@ switch ($user) {
 
     <div class="container-login">
         <div class="wrap-login">
-            <form class="login-form validate-form" id="formLogin" method="post">
+            <form class="login-form validate-form" action="../backend/controller/loginControlador.php" id="formLogin" method="post">
                 <span class="login-form-title">LOGIN</span>
 
                 <div class="wrap-input100" data-validate="Usuario incorrecto">
-                    <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario">
+                    <input class="input100" type="text" name="loginUser" placeholder="Usuario">
                     <span class="focus-efecto"></span>
                 </div>
 
                 <div class="wrap-input100" data-validate="Password incorrecto">
-                    <input class="input100" type="password" id="password" name="password" placeholder="Password">
+                    <input class="input100" type="password" name="loginPassword" placeholder="Password">
                     <span class="focus-efecto"></span>
                 </div>
 
                 <div class="container-login-form-btn">
                     <div class="wrap-login-form-btn">
                         <div class="login-form-bgbtn"></div>
-                        <button type="submit" name="submit" class="login-form-btn">CONECTAR</button>
+                        <button id="btnConectar" type="submit" name="submit" class="login-form-btn">CONECTAR</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
 </body>
 
 </html>

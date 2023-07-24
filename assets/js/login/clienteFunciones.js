@@ -1,3 +1,41 @@
+//funciones para llenar las imagenes de los platos
+function listarPlatos() {
+    $.ajax({
+        type: "POST",
+        url: "backend/controller/platosController.php?f=showPlatosSlider2",
+        success: function (data) {
+            document.getElementById('contenedorOfertas').innerHTML = data;
+        },
+    });
+    return false;
+}
+listarPlatos();
+
+function llenarBanner() {
+    $.ajax({
+        type: "POST",
+        url: "backend/controller/platosController.php?f=showPlatosBanner2",
+        success: function (data) {
+            document.getElementById('contenedorBanner').innerHTML = data;
+        },
+    });
+    return false;
+}
+llenarBanner();
+
+function llenarOfertas() {
+    $.ajax({
+        type: "POST",
+        url: "backend/controller/platosController.php?f=showOfertas2",
+        success: function (data) {
+            document.getElementById('contenedorOfertas2').innerHTML = data;
+        },
+    });
+    return false;
+}
+llenarOfertas();
+
+
 //funcion para loguear
 $(document).ready(function () {
     $("#btnLogin").click(function () {
@@ -19,9 +57,7 @@ $(document).ready(function () {
     });
 });
 
-
-
-//funcion para registrar empleado
+//funcion para registrar cliente
 $(document).ready(function () {
     $("#btnRegistrar").click(function () {
         var datos = $("#frmRegistrarCliente").serialize();

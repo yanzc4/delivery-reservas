@@ -85,10 +85,11 @@
             color: var(--color-dark-variant);
         }
 
-        .bg-modal{
+        .bg-modal {
             background: var(--color-background);
             color: var(--color-dark-variant);
         }
+
         .text-success {
             color: #F97777 !important;
         }
@@ -97,15 +98,17 @@
             border: none;
             background-color: transparent;
         }
-        
+
         .btn-login {
             background: #F97777 !important;
             color: #fff;
         }
+
         .btn-login:hover {
             background: #F97777 !important;
             color: #fff;
         }
+
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -114,11 +117,11 @@
 
         @media screen and (max-width: 768px) {
             main {
-            width: 100%;
-            padding-top: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
+                width: 100%;
+                padding-top: 0;
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
     </style>
     <title>Ajustes</title>
@@ -144,7 +147,7 @@
                         <div class="row mb-2">
                             <div class="col-6">
                                 <label class="w-100 text-truncate">Numero de Telefono</label>
-                                <input class="form-control" type="text" name="aCelular" />
+                                <input class="form-control" type="number" id="celular" name="aCelular" />
                             </div>
                             <div class="col-6">
                                 <label class="w-100 text-truncate">Fecha de Nacimiento</label>
@@ -171,22 +174,24 @@
                             <label for="">Cargo</label>
                             <select class="form-select" name="aCargo" id="">
                                 <option value="Administrador">Administrador</option>
-                                <option value="Empleado">Empleado</option>
+                                <option value="Delivery">Delivery</option>
+                                <option value="Monitoreo">Monitoreo</option>
                             </select>
                         </div>
+
                         <div class="text-center mt-4">
-                        <button class="btn btn-login w-100" name="btnRegistrarEmpleado" id="btnRegistrarEmpleado">Registrar</button>
+                            <button class="btn btn-login w-100" name="btnRegistrarEmpleado" id="btnRegistrarEmpleado">Registrar</button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-            <input onkeyup="buscar_ahora($('#buscar_1').val());" type="text" class="form-control bg-transparent text-azul-medio" id="buscar_1" name="buscar_1" placeholder="Buscar cliente">
+                <input onkeyup="buscar_ahora($('#buscar_1').val());" type="text" class="form-control bg-transparent text-azul-medio" id="buscar_1" name="buscar_1" placeholder="Buscar cliente">
+                <div class="container mt-3" id="tablaUsuario">
 
-                <div class="container" id="tablaUsuarios"></div>
+                </div>
             </div>
-        </div>
     </main>
 
     <!-- MODAL CON BOOSTRAP  -->
@@ -200,7 +205,10 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" id="frmActualizarEmpleado">
-                    <div class="row mb-2">
+                        <div class="row mb-2">
+                            
+                                <input class="form-control" type="hidden" id="id" name="txtId" />
+                         
                             <div class="col-6">
                                 <label>Nombre:</label>
                                 <input class="form-control" type="text" id="nombre" name="txtNombre" />
@@ -213,7 +221,7 @@
                         <div class="row mb-2">
                             <div class="col-6">
                                 <label class="w-100 text-truncate">Numero de Telefono</label>
-                                <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" />
+                                <input class="form-control" type="number" id="phoneNumber" name="phoneNumber" />
                             </div>
                             <div class="col-6">
                                 <label class="w-100 text-truncate">Fecha de Nacimiento</label>
@@ -236,14 +244,6 @@
                             </div>
                         </div>
 
-                        <div class="mb-2">
-                            <label for="">Cargo</label>
-                            <select class="form-select" name="chkCargo" id="">
-                                <option value="Admin">administrador</option>
-                                <option value="Empleado">empleado</option>
-                            </select>
-                        </div>
-
                         <button class="btn btn-login w-100 mt-2" id="btnActualizarEmpleado">Actualizar</button>
                     </form>
                     <!-- <button id="btn-cerrar-modal" class="btn btn-danger">Cerrar</button> -->
@@ -259,6 +259,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
     <script src="../../assets/js/administrador/crudUsuarios.js"></script>
+    <script>
+        var input = document.getElementById('celular');
+        var input2 = document.getElementById('phoneNumber');
+        input.addEventListener('input', function() {
+            if (this.value.length > 9)
+                this.value = this.value.slice(0, 9);
+        })
+        input2.addEventListener('input', function() {
+            if (this.value.length > 9)
+                this.value = this.value.slice(0, 9);
+        })
+    </script>
 </body>
 
 </html>
