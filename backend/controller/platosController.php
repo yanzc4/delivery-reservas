@@ -140,20 +140,20 @@ function showOfertas()
     while ($fila = $resultado->fetch_assoc()) {
     ?>
         <div class="container mb-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <img src="../<?php echo $fila['imagen'] ?>" class="img-card" alt="">
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
-                        <div class="p-3">
-                            <p>OFERTAS DEL DIA</p>
-                            <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
-                            <a href="platos.php" target="myFrame">Ver Más ...</a>
-                        </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <img src="../<?php echo $fila['imagen'] ?>" class="img-card" alt="">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
+                    <div class="p-3">
+                        <p>OFERTAS DEL DIA</p>
+                        <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
+                        <a href="platos.php" target="myFrame">Ver Más ...</a>
                     </div>
                 </div>
             </div>
-<?php
+        </div>
+    <?php
     }
 }
 
@@ -208,19 +208,48 @@ function showOfertas2()
     while ($fila = $resultado->fetch_assoc()) {
     ?>
         <div class="container mb-3">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <img src="<?php echo $fila['imagen'] ?>" class="img-card" alt="">
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
-                        <div class="p-3">
-                            <p>OFERTAS DEL DIA</p>
-                            <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
-                            <a href="platos.php" target="myFrame">Ver Más ...</a>
-                        </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <img src="<?php echo $fila['imagen'] ?>" class="img-card" alt="">
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
+                    <div class="p-3">
+                        <p>OFERTAS DEL DIA</p>
+                        <h3 class="text-wrap w-75">APROVECHA LAS MEJORES OFERTAS</h3>
+                        <a href="platos.php" target="myFrame">Ver Más ...</a>
                     </div>
                 </div>
             </div>
+        </div>
+    <?php
+    }
+}
+
+function showPlatosAdmin()
+{
+    $conexion = conectar();
+    $resultado = listarPlatos($conexion);
+
+    while ($fila = $resultado->fetch_assoc()) {
+        $datos = $fila['id'] . "||" .
+            $fila['nombre'] . "||" .
+            $fila['precio'] . "||" .
+            $fila['imagen'] . "||" .
+            $fila['descripcion'] . "||" .
+            $fila['categoria'];
+    ?>
+        <tr class="">
+            <td scope="row"><?php echo $fila['id'] ?></td>
+            <td><?php echo $fila['nombre'] ?></td>
+            <td>S/ <?php echo $fila['precio'] ?></td>
+            <td>
+
+                <button onclick="llenarModal('<?php echo $datos ?>')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
+
+                <button onclick="ePlato(<?php echo $fila['id'] ?>)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
+
+            </td>
+        </tr>
 <?php
     }
 }

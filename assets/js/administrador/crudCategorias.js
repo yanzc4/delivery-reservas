@@ -106,3 +106,15 @@ function mandar_php(codigo) {
         },
     });
 }
+
+function listarPlatosAdmin() {
+    $.ajax({
+        type: "POST",
+        url: "../../backend/controller/platosController.php?f=showPlatosAdmin",
+        success: function (data) {
+            document.getElementById('tablaPlatosAdmin').innerHTML = data;
+        },
+    });
+    return false;
+}
+listarPlatosAdmin();

@@ -63,7 +63,7 @@
             </span>
             <h3>Agregar Plato</h3>
         </a>
-        <a href="../">
+        <a href="../../backend/controller/cerrarSesionEmpleado.php">
             <span class="material-symbols-sharp">
                 logout
             </span>

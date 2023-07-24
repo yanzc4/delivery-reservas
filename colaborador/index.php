@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-$usuarioColaborador = $_SESSION['usuario'];
-$rolColaborador = $_SESSION['rol'];
+$usuarioColaborador = $_SESSION['usuarioc'];
+$rolColaborador = $_SESSION['rolc'];
 
 if ($rolColaborador == "Administrador") {
     header("location: administrador");

@@ -211,28 +211,7 @@
                             <th scope="col">Ajustes</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="">
-                            <td scope="row">1</td>
-                            <td>salchiapa.jjjj</td>
-                            <td>12.76</td>
-                            <td>
-
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-
-                                <button onclick="ePlato(1)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>2</td>
-                            <td>salchiapa.jjjj</td>
-                            <td>12.76</td>
-                            <td>
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
-                                <button onclick="ePlato(2)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
-                            </td>
-                        </tr>
+                    <tbody id="tablaPlatosAdmin">
                     </tbody>
                 </table>
             </div>

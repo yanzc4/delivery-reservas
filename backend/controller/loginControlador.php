@@ -11,17 +11,17 @@ session_start();
     $array = $resultado->fetch_assoc();
 
     if ($array > 0) {
-        $_SESSION['id'] = $array["id"];
-        $_SESSION['usuario'] = $array["user"];
-        $_SESSION['password'] = $array["pass"];
-        $_SESSION['nombre'] = $array["nombre"];
-        $_SESSION['email'] = $array["email"];
-        $_SESSION['telefono'] = $array["telefono"];
-        $_SESSION['f_nacimiento'] = $array["f_nacimiento"];
-        $_SESSION['rol'] = $array["rol"];
-        $_SESSION['imagen'] = $array["imagen"];
-        $_SESSION['direccion'] = $array["direccion"];
-        $_SESSION['estado'] = $array["estado"];
+        $_SESSION['idc'] = $array["id"];
+        $_SESSION['usuarioc'] = $array["user"];
+        $_SESSION['passwordc'] = $array["pass"];
+        $_SESSION['nombrec'] = $array["nombre"];
+        $_SESSION['emailc'] = $array["email"];
+        $_SESSION['telefonoc'] = $array["telefono"];
+        $_SESSION['f_nacimientoc'] = $array["f_nacimiento"];
+        $_SESSION['rolc'] = $array["rol"];
+        $_SESSION['imagenc'] = $array["imagen"];
+        $_SESSION['direccionc'] = $array["direccion"];
+        $_SESSION['estadoc'] = $array["estado"];
 
         if ($array['rol']=="Administrador") {
             header("location: ../../colaborador/administrador");

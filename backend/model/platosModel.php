@@ -8,7 +8,7 @@ function listarPlatos($conexion){
 }
 
 function llenarSlider($conexion){
-    $query = "SELECT * from productos ORDER by id DESC LIMIT 10";
+    $query = "SELECT * from productos where estado=1 ORDER by id DESC LIMIT 10";
     $resultado = $conexion->query($query);
     return $resultado;
 }
@@ -21,6 +21,12 @@ function llenarBanner($conexion){
 
 function llenarOfertas($conexion){
     $query = "SELECT * FROM ofertas where tipo='oferta'";
+    $resultado = $conexion->query($query);
+    return $resultado;
+}
+
+function agregarPlatosAdmin($conexion, $datos){
+    $query = "insert into productos(nombre, precio, descripcion, imagen, id_categoria, estado) values ('$datos[nombre]', '$datos[precio]', '$datos[descripcion]', '$datos[imagen]', '$datos[id_categoria]', 1)";
     $resultado = $conexion->query($query);
     return $resultado;
 }
