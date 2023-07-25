@@ -12,9 +12,14 @@ function money(float $valor, string $simbolo = 'S/.'): string
     return $simbolo . number_format($valor, 2, '.', ',');
 }
 
-$f1=$_POST['pfechainicio'];
-$f2=$_POST['pfechafin'];
-$consulta=$con->query("call _reporteplatos ('$f1','$f2')");
+$consulta=$con->query("SELECT
+p.id AS id_producto,
+p.nombre AS nombre_producto,
+SUM(dp.cantidad) AS total_vendido
+FROM productos p
+INNER JOIN detallepedido dp ON p.id = dp.id_producto
+GROUP BY p.id, p.nombre
+ORDER BY total_vendido DESC;");
 
 class PDF extends FPDF
 {
@@ -95,47 +100,24 @@ $fpdf->SetFillColor(255,196,56);
 $fpdf->SetTextColor(47,45,53);
 $fpdf->SetDrawColor(255,196,56);
 $fpdf->SetFont('Arial','B',14);
+$fpdf->Cell(60,10,'ID',1,0,'C',1);
 $fpdf->Cell(60,10,'PLATO',1,0,'C',1);
-$fpdf->Cell(25,10,'CANT',1,0,'C',1);
-$fpdf->Cell(35,10,'SUBTOTAL',1,0,'C',1);
-$fpdf->Cell(35,10,'DESCUENTO',1,0,'C',1);
-$fpdf->Cell(35,10,'TOTAL',1,0,'C',1);
+$fpdf->Cell(60,10,'VENDIDOS',1,0,'C',1);
 $fpdf->Ln();
-$ssubtotal=0;
-$sdsc=0;
-$stotal=0;
+
 while($resultado = $consulta->fetch_assoc()) {
     $fpdf->SetFont('Arial','',14);
     $fpdf->SetDrawColor(47,45,53);
     $fpdf->SetTextColor(47,45,53);
     $fpdf->SetLineWidth(0.5);
-    $fpdf->Cell(60,10,utf8_decode($resultado['nombre']),'B',0,'S',0);
-    $fpdf->Cell(25,10,utf8_decode($resultado['vendidos']),'B',0,'C',0);
-    $fpdf->Cell(35,10,utf8_decode($resultado['subtotal']),'B',0,'C',0);
-    $fpdf->Cell(35,10,utf8_decode($resultado['dsc']),'B',0,'C',0);
-    $fpdf->Cell(35,10,utf8_decode($resultado['total']),'B',0,'C',0);
+    $fpdf->Cell(60,10,$resultado['id_producto'],'B',0,'S',0);
+    $fpdf->Cell(25,10,$resultado['nombre_producto'],'B',0,'C',0);
+    $fpdf->Cell(35,10,$resultado['total_vendido'],'B',0,'C',0);
     $fpdf->Ln();
-    $ssubtotal += $resultado['subtotal'];
-    $sdsc += $resultado['dsc'];
-    $stotal += $resultado['total'];
+
 }
 
-$fpdf->SetDrawColor(47,45,53);
-$fpdf->Cell(100,10,'',0,0,'S',0);
-$fpdf->Cell(55,10,'SUBTOTAL','B',0,'',0);
-$fpdf->Cell(35,10,money($ssubtotal),'B',0,'',0);
-$fpdf->Ln();
-$fpdf->SetFont('Arial','B',14);
-$fpdf->Cell(100,10,'RESUMEN DE PLATOS VENDIDOS',0,0,'S',0);
-$fpdf->SetFont('Arial','',14);
-$fpdf->Cell(55,10,'DESCUENTO','B',0,'',0);
-$fpdf->Cell(35,10,money($sdsc),'B',0,'',0);
-$fpdf->Ln();
-$fpdf->SetDrawColor(255,196,56);
-$fpdf->Cell(9,10,'Restaurante Boomerang','T',0,'s',0);
-$fpdf->Cell(91,10,'',0,0,'C',0);
-$fpdf->Cell(55,10,'TOTAL',1,0,'',1);
-$fpdf->Cell(35,10,money($stotal),1,0,'',1);
+
 $fpdf->Ln();
 $fpdf->SetFont('Arial','',11);
 $fpdf->Cell(80,8,'Prenix System',0,0,'',0);
