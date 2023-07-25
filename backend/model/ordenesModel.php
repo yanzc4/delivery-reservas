@@ -11,4 +11,10 @@ function asignarRepartidor($conexion, $datos){
     $resultado = mysqli_query($conexion, $query);
     return $resultado;
 }
+
+function crearOrdenEntregada($conexion, $idp){
+    $query = "call _agregarordenentregada($idp)";
+    $resultado = $conexion->query($query);
+    return $resultado;
+}
 ?>

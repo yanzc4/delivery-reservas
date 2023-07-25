@@ -1,6 +1,27 @@
 <?php
-$cabecera = "Delivery";
-$id = 5;
+$cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: ../administrador");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: ../monitoreo");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -67,14 +88,32 @@ $id = 5;
                 // Agregar ubicación actual como waypoint
                 control.setWaypoints([
                     L.latLng(latitude, longitude),
-                    L.latLng(-12.036374, -77.042793),
-                    L.latLng(-12.059733677889739, -77.03996420518459)
+                    <?php
+                    //traer la ubicacion de los clientes de la base de datos
+                    include_once "../../inc/conexion.php";
+                    $con = conectar();
+                    $query = "SELECT u.lat, u.lng, concat(c.nombre,' ', c.apellido) as nombre_c, c.direccion, usu.nombre FROM ubicaciontemporal u JOIN clientes c on u.id_cliente=c.id join usuarios usu on u.id_trabajador=usu.id where u.id_trabajador='$idColaborador'";
+                    $result = mysqli_query($con, $query);
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        //almacenarlo en un nuevo array
+                        $datos = array(
+                            "lat" => $row['lat'],
+                            "lng" => $row['lng'],
+                            "nombre_c" => $row['nombre_c'],
+                            "direccion" => $row['direccion'],
+                            "nombre" => $row['nombre']
+                        );
+                        //convertir el array en json
+                        echo "L.latLng(" . $row['lat'] . "," . $row['lng'] . "),";
+                    }
+                    ?>
                 ]);
             }, error);
         }
 
         cargarMapa();
-        //setInterval(cargarMapa, 10000);
+        setInterval(cargarMapa, 10000);
             //para agregar la ruta
             var control = L.Routing.control({
 
@@ -98,14 +137,19 @@ $id = 5;
                             break;
 
                             //para lo de clientes usar tambien un while
-                        case 1:
-                            market_icon = clienteIcon;
-                            info = "Roberto Carlos";
-                            break;
-                        case 2:
-                            market_icon = clienteIcon;
-                            info = "Julio Cesar";
-                            break;
+                            <?php
+                            //poner icono a los clientes traidos de la base de datos
+                            $i = 1;
+                            $result = mysqli_query($con, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo "case $i:
+                                market_icon = clienteIcon;
+                                info = '" . $row['nombre_c'] . "<hr> Direccion: <br>" . $row['direccion']."';
+                                break;";
+                                $i++;
+                            }
+
+                            ?>
                     }
 
                     //dibujar el icono en el mapa

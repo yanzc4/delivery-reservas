@@ -1,14 +1,26 @@
 <?php
+$cabecera="Perfil";
 
-$usuario = "cliente";
-$id = "1";
-$nombre = "cliente";
-$apellido = "cliente";
-$rol = "cliente";
-$cel = "999999999";
-$pass = "1234";
-$nacimiento = "29-10-2000";
-$cabecera = "Perfil";
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: ../administrador");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: ../monitoreo");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
 
 ?>
 <!DOCTYPE html>
@@ -20,7 +32,12 @@ $cabecera = "Perfil";
   <meta name="apple-mobile-web-app-title" content="CodePen">
   <title>Perfil USuario</title>
   <link rel="canonical" href="https://codepen.io/TurkAysenur/pen/QWyPMgq" />
-  <link rel="stylesheet" href="../../assets/css/perfilma.css">
+  <link rel="stylesheet" href="../../assets/css/perfil2.css">
+  <style>
+    .main-area{
+      display: none;
+    }
+  </style>
 </head>
 
 <body translate="no">
@@ -28,14 +45,14 @@ $cabecera = "Perfil";
 
     <!-- Lateral Izquierdo -->
     <div class="user-profile-area">
-    <div class="task-manager">Datos Nombre</div>
+      <div class="task-manager">Datos Nombre</div>
       <!-- Cuadro Perfil 01 (con Imagen) -->
       <div class="side-wrapper">
         <div class="user-profile">
-          <img src="https://assets.codepen.io/3364143/Screen+Shot+2020-08-01+at+12.24.16.png" alt="" class="user-photo">
+          <img src="../../<?php echo $imagenColaborador ?>" alt="" class="user-photo">
           <!-- Nombre del Ususario -->
-          <div class="user-name">Natalie Smith</div>
-          <div class="user-mail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7816190c1914111d560b15110c10381f15191114561b1715">[user&#160;mail.com]</a></div>
+          <div class="user-name"><?php echo $nombreColaborador ?></div>
+          <div class="user-mail"><a href="mailto:<?php echo $emailColaborador ?>" class="__cf_email__">[<?php echo $emailColaborador ?>]</a></div>
         </div>
         <!-- Botones Admin-->
         <div class="user-notification">
@@ -52,7 +69,7 @@ $cabecera = "Perfil";
             </svg>
           </button>
         </div>
-        <!-- NUmero de pedidos -->
+        <!-- Datos generales -->
         <div class="task-status">
           <div class="task-stat">
             <div class="task-number">12</div>
@@ -73,12 +90,13 @@ $cabecera = "Perfil";
       </div>
       <!-- Cuadro Perfil 02 (con Imagen) -->
       <div class="side-wrapper">
-        <div class="project-title">Ubicaciones/Metodos de Pago</div>
+        <div class="project-title">Datos Personales</div>
         <div class="project-name">
-          <div class="project-department">Jr. Huaraz</div>
-          <div class="project-department">Av. ALf Ugarte</div>
-          <div class="project-department">Efectivo</div>
-          <div class="project-department">Tarjeta BCp</div>
+          <div class="project-department">Codigo: <?php echo $idColaborador ?></div>
+          <div class="project-department">Celular: <a href="tel:<?php echo $telefonoColaborador ?>"><?php echo $telefonoColaborador ?></a></div>
+          <div class="project-department">Dirección: <?php echo $direccionColaborador ?></div>
+          <div class="project-department">Fecha de Nacimiento: <?php echo $f_nacimientoColaborador ?></div>
+          <div class="project-department">Usuario: <?php echo $usuarioColaborador ?></div>
         </div>
       </div>
       <!-- Cuadro Perfil 02 (con Imagen) -->
@@ -100,8 +118,8 @@ $cabecera = "Perfil";
 
       <div class="mail-contents">
         <div class="mail-detail-profile">
-          <img src="https://assets.codepen.io/3364143/Screen+Shot+2020-08-01+at+12.24.16.png" alt="" class="members inbox-detail" />
-          <div class="mail-detail-name">Natalie Smith</div>
+          <img src="../../<?php echo $imagenColaborador ?>" alt="" class="members inbox-detail" />
+          <div class="mail-detail-name"><?php echo $nombreColaborador ?></div>
         </div>
 
 

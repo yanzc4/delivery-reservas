@@ -1,6 +1,27 @@
 <?php
-$cabecera = "Delivery";
-$id = 5;
+$cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: ../administrador");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: ../monitoreo");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,13 +45,15 @@ $id = 5;
     </section>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
         //funcion   para obtener la ubicacion del motorizado
         function obtenerUbicacion() {
             navigator.geolocation.getCurrentPosition(position => {
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
-                var id = <?php echo $id ?>;
+                var id = '<?php echo $idColaborador ?>';
+                var nombre = '<?php echo $nombreColaborador ?>';
 
                 // Realizamos una petición AJAX a un archivo PHP
                 $.ajax({
@@ -39,7 +62,8 @@ $id = 5;
                     data: {
                         lat,
                         lng,
-                        id
+                        id,
+                        nombre
                     }
                 }).done(function(response) {
                     // La respuesta de PHP se almacena en la variable 'response'
@@ -52,7 +76,6 @@ $id = 5;
         obtenerUbicacion();
     </script>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../../assets/js/menu/funcionmenu.js"></script>
 </body>
 

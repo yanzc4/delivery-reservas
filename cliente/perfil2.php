@@ -27,7 +27,13 @@ if (!isset($usuarioCliente)) {
   <title>Perfil USuario</title>
   <link rel="canonical" href="https://codepen.io/TurkAysenur/pen/QWyPMgq" />
   <link rel="stylesheet" href="../assets/css/perfil2.css">
+  <style>
+    .main-area{
+      display: none;
+    }
+  </style>
 </head>
+
 
 <body translate="no">
   <div class="container">

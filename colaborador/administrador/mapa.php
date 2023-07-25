@@ -67,27 +67,20 @@ $id = 4;
         }).addTo(map).bindPopup("Ubicacion del Restaurante");
 
 
-        //marcadores de los clientes
-        L.marker([-11.833885978707777, -77.11822736100126], {
-            icon: clienteIcon
-        }).addTo(map).bindPopup("Carlos Moreyra");
-        L.marker([-11.960893594725457, -77.05023098873214], {
-            icon: clienteIcon
-        }).addTo(map).bindPopup("Erica Gonzales");
 
 
-        // select u.id, ub.lat, ub.lng, concat(u.nombre,' ',u.apellido) from usuario u join ubicacion ub on u.id=ub.id;
+        //select u.id, ub.lat, ub.lng, concat(u.nombre,' ',u.apellido) from usuario u join ubicacion ub on u.id=ub.id;
         <?php
-        /*
+        
         require_once "../../inc/conexion.php";
         $con=conectar();
-        $sql="select ub.id, ub.lat, ub.lng, concat(c.nombre,' ',c.apellido) from ubicacion ub join clientes c on ub.id=c.id";
+        $sql="SELECT u.lat, u.lng, concat(c.nombre,' ', c.apellido) as nombre, c.direccion, usu.nombre FROM ubicaciontemporal u JOIN clientes c on u.id_cliente=c.id join usuarios usu on u.id_trabajador=usu.id";
         
         $resultado=mysqli_query($con,$sql);
         while($fila=mysqli_fetch_row($resultado)){
-            echo "L.marker([".$fila[1].", ".$fila[2]."], {icon: clienteIcon}).addTo(map).bindPopup('".$fila[3]."');";
+            echo "L.marker([".$fila[0].", ".$fila[1]."], {icon: clienteIcon}).addTo(map).bindPopup('Cliente: <br> $fila[2] <hr> Dirección: <br> $fila[3] <hr> Repartidor: <br> $fila[4]');";
         }
-        */
+        
 
 
         //marcador de los empleados con archivo json

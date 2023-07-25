@@ -61,6 +61,65 @@ function showOrdenes()
 }
 
 
+function showOrdenes2()
+{
+    $conexion = conectar();
+    $id = $_POST['id'];
+    $resultado = listarOrdenes($conexion);
+?>
+    <?php
+    while ($fila = $resultado->fetch_assoc()) {
+        if ($fila['id_trabajador'] == $id) {
+            $datos = $fila['id_cliente'] . "||" .
+            $fila['id_pedido'];
+    ?>
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                    <div class="container bg-modal sombra redondear p-3">
+                        <div>
+                            <label for="" class="fs-8">Cliente</label>
+                        </div>
+                        <div>
+                            <label for="" class="form-label"><i class='bx bx-user'></i> <?php echo $fila['nombre']." ".$fila['apellido'] ?></label>
+                        </div>
+                        <div>
+                            <label for="" class="fs-8">Celular</label>
+                        </div>
+                        <div>
+                            <label for="" class="form-label"><i class='bx bx-phone'></i> <?php echo $fila['telefono'] ?></label>
+                        </div>
+                        <div>
+                            <label for="" class="fs-8">Total</label>
+                        </div>
+                        <div>
+                            <label for="" class="form-label text-rosa"><i class='bx bx-credit-card'></i> S./ <?php echo $fila['total'] ?></label>
+                        </div>
+                        <hr>
+                        <div>
+                            <label for="" class="fs-8">Dirección</label>
+                        </div>
+                        <div>
+                            <label for="" class="form-label"><i class='bx bx-map'></i> <?php echo $fila['direccion'] ?></label>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <label for="" class="fs-8 mb-2">Aprox: <label for="" class="text-rosa">.km</label></label>
+                            <button onclick="entregarPedido(<?php echo $fila['id_pedido'] ?>)" class="btn btn-secundario w-100"><i class='bx bx-check'></i> Entregado</button>
+                        </div>
+                    </div>
+                </div>
+<?php
+        }
+    }
+}
+
+
+function newEntrega(){
+    $conexion = conectar();
+    $idp = $_POST['idp'];
+    echo crearOrdenEntregada($conexion, $idp);
+}
+
+
 
 function asignandoRepartidor(){
     $conexion = conectar();
