@@ -1,14 +1,28 @@
 <?php
-
-$usuario = "cliente";
-$id = "1";
-$nombre = "cliente";
-$apellido = "cliente";
-$rol = "cliente";
-$cel = "999999999";
-$pass = "1234";
-$nacimiento = "29-10-2000";
 $cabecera = "Perfil";
+
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Delivery") {
+    header("location: delivery");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: monitoreo");
+} elseif (!isset($rolColaborador)) {
+    header("location: ../");
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +43,7 @@ $cabecera = "Perfil";
             background-color: transparent;
         }
 
-        .bg-modal1{
+        .bg-modal1 {
             background: #18191a;
             color: #ccc;
         }
@@ -61,17 +75,17 @@ $cabecera = "Perfil";
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo"><?php echo $nombre, " ", $apellido ?></h3>
-                <p class="texto">Trabajador activo del restaurante boomerang, desarrollando el cargo de <?php echo $rol ?>,
-                    su codigo de empleado el cual le asigno el sistema es <?php echo $id ?>
+                <h3 class="titulo"><?php echo $nombreColaborador ?></h3>
+                <p class="texto">Trabajador activo del restaurante boomerang, desarrollando el cargo de <?php echo $rolColaborador ?>,
+                    su codigo de empleado el cual le asigno el sistema es <?php echo $idColaborador ?>
                 </p>
             </div>
             <div class="perfil-usuario-footer pb-0">
                 <ul class="lista-datos">
                     <li><i class="icono fas fa-map-signs"></i><label>Direccion de usuario:</label></li>
-                    <li><i class="icono fas fa-phone-alt"></i><label>Telefono: <?php echo $cel ?></label></li>
+                    <li><i class="icono fas fa-phone-alt"></i><label>Telefono: <?php echo $telefonoColaborador ?></label></li>
                     <li><i class="icono fas fa-briefcase"></i><label>Trabaja en: Boomerang</label></li>
-                    <li><i class="icono fas fa-building"></i><label> Cargo: <?php echo $rol ?></label></li>
+                    <li><i class="icono fas fa-building"></i><label> Cargo: <?php echo $rolColaborador ?></label></li>
                 </ul>
                 <ul class="lista-datos pb-0">
                     <li><i class="icono fas fa-location"></i><label>Ubicacion.</label></li>

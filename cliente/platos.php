@@ -43,17 +43,31 @@ if (!isset($usuarioCliente)) {
             border: none;
             background: transparent;
         }
-        .bg-modal1{
+
+        .bg-modal1 {
             background: var(--body-color);
         }
-        .btnTexto2{
+
+        .btnTexto2 {
             display: none;
         }
+
+        .img3 {
+            width: 100%;
+            height: 120px;
+            background: var(--color-imagen);
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            border-radius: 10px;
+            box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+        }
+
         @media screen and (max-width: 768px) {
-            .btnTexto1{
+            .btnTexto1 {
                 display: none;
             }
-            .btnTexto2{
+
+            .btnTexto2 {
                 display: block;
             }
         }
@@ -204,7 +218,7 @@ if (!isset($usuarioCliente)) {
                                             <input type="hidden" name="idc" value="<?php echo $idCliente ?>">
                                             <input type="hidden" name="idp" id="moaId">
                                             <input type="hidden" name="precio" id="moaPrecio">
-                                        <button id="btnAgrearDesdeModal" class="btn bg-rosa text-light w-100"><label for="" class="btnTexto1">Agregar a carrito</label><label for="" class="btnTexto2"><i class='bx bx-cart-add'></i></label></button>
+                                            <button id="btnAgrearDesdeModal" class="btn bg-rosa text-light w-100"><label for="" class="btnTexto1">Agregar a carrito</label><label for="" class="btnTexto2"><i class='bx bx-cart-add'></i></label></button>
                                         </form>
                                     </div>
                                 </div>

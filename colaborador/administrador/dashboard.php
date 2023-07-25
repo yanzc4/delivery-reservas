@@ -1,3 +1,28 @@
+<?php
+$cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Delivery") {
+    header("location: ../delivery");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: ../monitoreo");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,6 +77,7 @@
             width: 200px;
             height: 200px;
             object-fit: cover;
+            border-radius: 10px;
         }
 
         .product-name {

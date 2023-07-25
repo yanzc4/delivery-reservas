@@ -43,7 +43,7 @@ function showPlatosCliente()
                         <div class="container bg-white redondear">
                             <div class="row">
                                 <div class="col-4 pe-0 ps-0" onclick="llenarDatos('<?php echo $datos ?>')" data-bs-toggle="modal" data-bs-target="#detalle">
-                                    <img class="imagen" src="../<?php echo $dato['imagen'] ?>" alt="bebida">
+                                    <img class="img3" src="../<?php echo $dato['imagen'] ?>" alt="bebida">
                                 </div>
                                 <div class="col-8 pt-2 align-items-center text-dark">
                                     <label class="text-truncate w-100"><?php echo $dato['nombre'] ?></label><br>
@@ -99,18 +99,18 @@ function showPlatosSlider()
     while ($fila = $resultado->fetch_assoc()) {
     ?>
         <div class="swiper-slide tarjeta redondear bg-b">
-            <div class="container">
-                <img class="img-card" src="../<?php echo $fila['imagen'] ?>" alt="">
+            <div class="container text-center">
+                <img class="img3" src="../<?php echo $fila['imagen'] ?>" alt="">
                 <hr>
                 <div>
-                    <label class="fw-bold" for="">S./ <?php echo $fila['precio'] ?></label>
-                    <label class="text-success fs-8" for="">22% OFF</label>
+                    <label class="fw-bold text-start" for="">S./ <?php echo $fila['precio'] ?></label>
+                    <label class="text-success fs-8 text-start" for="">22% OFF</label>
                 </div>
                 <div>
-                    <label class="text-success" for="">ENVIO GRATIS</label>
+                    <label class="text-success text-start" for="">ENVIO GRATIS</label>
                 </div>
                 <div>
-                    <p class="f-texto2"><?php echo $fila['descripcion'] ?></p>
+                    <p class="f-texto2 text-start"><?php echo $fila['descripcion'] ?></p>
                 </div>
             </div>
         </div>
@@ -167,18 +167,18 @@ function showPlatosSlider2()
     while ($fila = $resultado->fetch_assoc()) {
     ?>
         <div class="swiper-slide tarjeta redondear bg-b">
-            <div class="container">
+            <div class="container text-center">
                 <img class="img-card" src="<?php echo $fila['imagen'] ?>" alt="">
                 <hr>
                 <div>
-                    <label class="fw-bold" for="">S./ <?php echo $fila['precio'] ?></label>
-                    <label class="text-success fs-8" for="">22% OFF</label>
+                    <label class="fw-bold text-start" for="">S./ <?php echo $fila['precio'] ?></label>
+                    <label class="text-success fs-8 text-start" for="">22% OFF</label>
                 </div>
                 <div>
-                    <label class="text-success" for="">ENVIO GRATIS</label>
+                    <label class="text-success text-start" for="">ENVIO GRATIS</label>
                 </div>
                 <div>
-                    <p class="f-texto2"><?php echo $fila['descripcion'] ?></p>
+                    <p class="f-texto2 text-start"><?php echo $fila['descripcion'] ?></p>
                 </div>
             </div>
         </div>
@@ -210,7 +210,7 @@ function showOfertas2()
         <div class="container mb-3">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                    <img src="<?php echo $fila['imagen'] ?>" class="img-card" alt="">
+                    <img src="<?php echo $fila['imagen'] ?>" class="img3" alt="">
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 bg-black text-container">
                     <div class="p-3">
@@ -244,14 +244,55 @@ function showPlatosAdmin()
             <td>S/ <?php echo $fila['precio'] ?></td>
             <td>
 
-                <button onclick="llenarModal('<?php echo $datos ?>')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
+                <button onclick="llenarModalPlatos('<?php echo $datos ?>');" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class='bx bx-edit-alt'></i></button>
 
-                <button onclick="ePlato(<?php echo $fila['id'] ?>)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
+                <button onclick="eliminacionPlatoAdmin(<?php echo $fila['id'] ?>)" class="btn btn-danger"><i class='bx bx-trash'></i></button>
 
             </td>
         </tr>
 <?php
     }
+}
+
+function addPlatoAdmin()
+{
+    $conexion = conectar();
+
+    if (!empty($_POST['nomPlato']) && !empty($_POST['plaPrecio']) && !empty($_POST['plaDesc']) && !empty($_POST['lsCategoria']) && !empty($_FILES['plaImagen']['name'])) {
+        $imagen = $_FILES['plaImagen']['name'];
+        $ruta = $_FILES['plaImagen']['tmp_name'];
+        $destino = "../../database/img/" . $imagen;
+        copy($ruta, $destino);
+
+        $destinodb = "database/img/" . $imagen;
+        $datos = array(
+            "nombre" => $_POST['nomPlato'],
+            "precio" => $_POST['plaPrecio'],
+            "descripcion" => $_POST['plaDesc'],
+            "id_categoria" => $_POST['lsCategoria']
+        );
+        agregarPlatosAdmin($conexion, $datos, $destinodb);
+        echo 1;
+    } else {
+        echo 0;
+    }
+}
+
+function editPlatosAdmin(){
+    $conexion = conectar();
+    $datos = array(
+        "id" => $_POST['ide'],
+        "nombre" => $_POST['txtNombre'],
+        "precio" => $_POST['txtPrecio'],
+        "descripcion" => $_POST['myarea']
+    );
+    echo editarPlatoAdmin($conexion, $datos);
+}
+
+function deletePlatosAdmin(){
+    $conexion = conectar();
+    $id = $_POST['id'];
+    echo eliminarPlatoAdmin($conexion, $id);
 }
 
 if (function_exists($_GET['f'])) {

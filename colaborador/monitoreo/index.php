@@ -1,5 +1,27 @@
 <?php
 $cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: ../administrador");
+} elseif ($rolColaborador == "Delivery") {
+    header("location: ../delivery");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -1,5 +1,27 @@
 <?php
-$cabecera = "Soporte";
+$cabecera="Chat";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Administrador") {
+    header("location: ../administrador");
+} elseif ($rolColaborador == "Delivery") {
+    header("location: ../delivery");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -213,45 +235,75 @@ $cabecera = "Soporte";
         require_once "../../frontend/cabeceraColaborador.php";
     }
     ?>
-    <main>
+
+<main>
         <div class="container altura">
-            <h3 class="texto mt-3">Atencion al cliente</h3>
+            <h3 class="texto mt-3">Chat Corporativo</h3>
             <div class="titulo">
-                <label for="">ChatBot Boomerang</label>
+                <label for="">Chat Boomerang</label>
             </div>
-            <section class="cuerpo">
-                <?php
-                for ($i = 0; $i < 10; $i++) {
-                ?>
-                    <div class="bot" id="bot">
-                        <div class="perfil">
-                            <i class='bx bxs-bot'></i>
-                        </div>
-                        <div class="sms">
-                            <p class="text-wrap" for="">Hola ¿En que puedo ayudarte?</p>
-                        </div>
-                    </div>
-                    <div class="usuario" id="usuario">
-                        <div class="sms">
-                            <p class="text-wrap" for="">Hola necesito solucionar un problema</p>
-                        </div>
-                        <div class="perfil">
-                            <i class='bx bxs-user'></i>
-                        </div>
-                    </div>
-                <?php
-                }
-                ?>
+            <section class="cuerpo" id="messages">
+
             </section>
+
             <div class="mensaje">
                 <div class="datos">
-                    <input id="sms" type="text" placeholder="Escribe algo aquí.." required>
-                    <button id="btnEnviar">Enviar</button>
+                    <input id="msgTxt" type="text" placeholder="Escribe algo aquí.." required>
+                    <button  id="msgBtn" onclick="module.sendMsg()">Enviar</button>
                 </div>
             </div>
         </div>
     </main>
+
     <script src="../../assets/js/menu/activarDarkmode.js"></script>
+    <script>
+        module = {};
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getDatabase, ref, set, remove, onChildAdded, onChildRemoved } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDh2tV3yB683KB8AbHZCSK9N-2--A47ztw",
+            authDomain: "delivery-9a34c.firebaseapp.com",
+            projectId: "delivery-9a34c",
+            storageBucket: "delivery-9a34c.appspot.com",
+            messagingSenderId: "423986390617",
+            appId: "1:423986390617:web:15605a11725acd7e75b348"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        
+        //variables
+        var msgTxt = document.getElementById("msgTxt");
+        var name = "<?php echo $nombreColaborador ?>";
+        //enviar mensaje
+        module.sendMsg = function sendMsg() {
+            var msg = msgTxt.value;
+            set(ref(db, 'messages/' + Date.now()), {
+                nombre: name,
+                msg: msg
+            });
+        }
+
+        //variables
+        var messages = document.getElementById("messages");
+
+        // recibir mensajes
+        onChildAdded(ref(db, 'messages'), (data) => {
+            if (data.val().nombre == name) {
+                messages.innerHTML += "<div class='usuario' id='usuario'><div class='sms'><p class='text-wrap' for=''>Tu : "+data.val().msg+"</p></div><div class='perfil'><i class='bx bxs-user'></i></div></div>";
+            }else{
+                messages.innerHTML += "<div class='bot' id='bot'><div class='perfil'><i class='bx bxs-bot'></i></div><div class='sms'><p class='text-wrap' for=''>"+data.val().nombre+" : "+data.val().msg+"</p></div></div>";
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -12,19 +12,14 @@ function money(float $valor, string $simbolo = 'S/.'): string
     return $simbolo . number_format($valor, 2, '.', ',');
 }
 
-$f1=$_POST['fechainicio'];
-$f2=$_POST['fechafin'];
-//consulta para mostrar los registros donde se muestra el nombre del cliente concatenado con el apellido, el id del pedido, la fecha, el subtotal, el descuento y el total
+//consulta para ver a los usuarios que estan activos
 $consulta = $con->query("SELECT
-p.id AS id_pedido,
-CONCAT(c.nombre, ' ', c.apellido) AS nombre_cliente,
-p.fecha,
-SUM(dp.cantidad * dp.precio) AS monto_total_pedido
-FROM pedidos p
-INNER JOIN detallepedido dp ON p.id = dp.id_pedido
-INNER JOIN productos pr ON dp.id_producto = pr.id
-INNER JOIN clientes c ON p.id_cliente = c.id
-GROUP BY p.id, c.nombre, c.apellido, p.fecha;
+id,
+CONCAT(nombre, ' ', apellido) AS nombre_completo,
+correo,
+telefono
+FROM clientes
+WHERE estado = 1;
 ");
 
 
@@ -95,39 +90,35 @@ $fpdf->AddPage();
 $fpdf->SetFont('Arial','B',24);
 $fpdf->SetTextColor(47,45,53);
 $fpdf->SetMargins(10,30,20,20);
-$fpdf->Write(3, 'REPORTE DE VENTAS');
+$fpdf->Write(3, 'REPORTE DE CLIENTES');
 $fpdf->SetFont('Arial','',14);
 $fpdf->SetX(140);
 $fpdf->Write(3, $fecha);
 $fpdf->Ln(8);
 $fpdf->SetFont('Arial','B',14);
-$fpdf->Write(7, 'DESDE: '.$f1.' HASTA: '.$f2);
+$fpdf->Write(7, 'REPORTE DE CLIENTES ACTIVOS');
 $fpdf->Ln(15);
 $fpdf->SetFillColor(249, 119, 119);
 $fpdf->SetTextColor(47,45,53);
 $fpdf->SetDrawColor(249, 119, 119);
 $fpdf->SetFont('Arial','B',14);
-$fpdf->Cell(50,10,'ID PEDIDO',1,0,'C',1);
-$fpdf->Cell(54,10,'CLIENTE',1,0,'C',1);
-$fpdf->Cell(45,10,'FECHA',1,0,'C',1);
-$fpdf->Cell(40,10,'MONTO',1,0,'C',1);
+$fpdf->Cell(20,10,'ID',1,0,'C',1);
+$fpdf->Cell(56,10,'NOMBRE',1,0,'C',1);
+$fpdf->Cell(75,10,'EMAIL',1,0,'C',1);
+$fpdf->Cell(35,10,'TELEFONO',1,0,'C',1);
 $fpdf->Ln();
-$ssubtotal=0;
-$sdsc=0;
-$stotal=0;
-//mostrar los registros
-while($row = $consulta->fetch_assoc()){
-    $fpdf->SetFont('Arial','',12);
-    $fpdf->SetTextColor(47,45,53);
-    $fpdf->SetDrawColor(47,45,53);
-    $fpdf->Cell(50,10,$row['id_pedido'],1,0,'C',0);
-    $fpdf->Cell(60,10,$row['nombre_cliente'],1,0,'C',0);
-    $fpdf->Cell(44,10,$row['fecha'],1,0,'C',0);
-    $fpdf->Cell(35,10,money($row['monto_total_pedido']),1,0,'C',0);
-    $fpdf->Ln();
-    $ssubtotal=$ssubtotal+$row['monto_total_pedido'];
-}
 
+//mostrar los registros
+while($mostrar = $consulta->fetch_assoc()){
+    $fpdf->SetFont('Arial','',14);
+    $fpdf->SetTextColor(47,45,53);
+    $fpdf->SetDrawColor(249, 119, 119);
+    $fpdf->Cell(20,10,$mostrar['id'],1,0,'C',0);
+    $fpdf->Cell(56,10,$mostrar['nombre_completo'],1,0,'C',0);
+    $fpdf->Cell(75,10,$mostrar['correo'],1,0,'C',0);
+    $fpdf->Cell(35,10,$mostrar['telefono'],1,0,'C',0);
+    $fpdf->Ln();
+}
 
 // $fpdf->SetDrawColor(47,45,53);
 // $fpdf->Cell(109,10,'',0,0,'S',0);
@@ -140,12 +131,12 @@ while($row = $consulta->fetch_assoc()){
 // $fpdf->Cell(50,10,'DESCUENTO','B',0,'',0);
 // $fpdf->Cell(30,10,money($sdsc),'B',0,'',0);
 $fpdf->Ln();
-$fpdf->SetDrawColor(249, 119, 119);
-$fpdf->Cell(9,10,'Restaurante Boomerang','T',0,'s',0);
-$fpdf->Cell(100,10,'',0,0,'C',0);
-$fpdf->Cell(50,10,'TOTAL',1,0,'',1);
-$fpdf->Cell(30,10,money($ssubtotal),1,0,'',1);
-$fpdf->Ln();
+// $fpdf->SetDrawColor(249, 119, 119);
+// $fpdf->Cell(9,10,'Restaurante Boomerang','T',0,'s',0);
+// $fpdf->Cell(100,10,'',0,0,'C',0);
+// $fpdf->Cell(50,10,'TOTAL',1,0,'',1);
+// $fpdf->Cell(30,10,money($ssubtotal),1,0,'',1);
+// $fpdf->Ln();
 $fpdf->SetFont('Arial','',11);
 $fpdf->Cell(80,8,'Prenix System',0,0,'',0);
 $fpdf->Ln();

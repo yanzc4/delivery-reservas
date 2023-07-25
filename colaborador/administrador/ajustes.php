@@ -15,9 +15,9 @@ $direccionColaborador = $_SESSION['direccionc'];
 $estadoColaborador = $_SESSION['estadoc'];
 
 if ($rolColaborador == "Delivery") {
-    header("location: delivery");
+    header("location: ../delivery");
 } elseif ($rolColaborador == "Monitoreo") {
-    header("location: monitoreo");
+    header("location: ../monitoreo");
 }elseif(!isset($rolColaborador)){
     header("location: ../");
 }

@@ -62,7 +62,7 @@ function showCarrito()
                     <div class="container">
                         <div class="row">
                             <div class="col-4 align-center pe-0 ps-0">
-                                <img class="imagen" src="../<?php echo $fila['imagen'] ?>" alt="bebida">
+                                <img class="img3" src="../<?php echo $fila['imagen'] ?>" alt="bebida">
                             </div>
                             <div class="col-8 pt-2 align-items-center">
                                 <label class="w-100 text-wrap"><?php echo $fila['nombre'] ?></label><br>

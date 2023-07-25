@@ -38,13 +38,13 @@
             <h3>Inventario</h3>
         </a> -->
         
-        <a href="chat.php" target="myFrame">
+        <!-- <a href="chat.php" target="myFrame">
             <span class="material-symbols-sharp">
                 textsms
             </span>
             <h3>Mensajes</h3>
             <span class="message-count">28</span>
-        </a>
+        </a> -->
         <a href="perfil2.php" target="myFrame">
             <span class="material-symbols-sharp">
                 person

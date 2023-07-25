@@ -25,8 +25,20 @@ function llenarOfertas($conexion){
     return $resultado;
 }
 
-function agregarPlatosAdmin($conexion, $datos){
-    $query = "insert into productos(nombre, precio, descripcion, imagen, id_categoria, estado) values ('$datos[nombre]', '$datos[precio]', '$datos[descripcion]', '$datos[imagen]', '$datos[id_categoria]', 1)";
+function agregarPlatosAdmin($conexion, $datos, $destinodb){
+    $query = "insert into productos(nombre, precio, descripcion, imagen, id_categoria, estado) values ('$datos[nombre]', '$datos[precio]', '$datos[descripcion]', '$destinodb', '$datos[id_categoria]', 1)";
+    $resultado = $conexion->query($query);
+    return $resultado;
+}
+
+function editarPlatoAdmin($conexion, $datos){
+    $query = "update productos set nombre='$datos[nombre]', precio='$datos[precio]', descripcion='$datos[descripcion]' where id='$datos[id]'";
+    $resultado = $conexion->query($query);
+    return $resultado;
+}
+
+function eliminarPlatoAdmin($conexion, $id){
+    $query = "update productos set estado=0 where id='$id'";
     $resultado = $conexion->query($query);
     return $resultado;
 }

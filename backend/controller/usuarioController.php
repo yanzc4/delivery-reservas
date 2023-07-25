@@ -51,7 +51,7 @@ function showUsuario()
             <tr>
                 <th>Id</th>
                 <th>user</th>
-                <th>pass</th>
+                <th>Cargo</th>
                 <th>nombre</th>
                 <th>Ajustes</th>
 
@@ -74,7 +74,7 @@ function showUsuario()
                 <tr>
                     <td><?php echo $fila['id'] ?></td>
                     <td><?php echo $fila['user'] ?></td>
-                    <td><?php echo $fila['pass'] ?></td>
+                    <td><?php echo $fila['rol'] ?></td>
                     <td><?php echo $fila['nombre'] ?></td>
 
                     <td>
@@ -97,6 +97,24 @@ function deleteUsuario()
     $id = $_POST['id'];
     $resultado = eliminarUsuario($conexion, $id);
     echo $resultado;
+}
+
+function showRepartidor()
+{
+    $conexion = conectar();
+    $resultado = mostrarRepartidor($conexion);
+?>
+
+    <select class="form-select" name="cboDelivery" aria-label="Default select example">
+        <?php
+        while ($fila = $resultado->fetch_assoc()) {
+        ?>
+            <option value="<?php echo $fila['id'] ?>"><?php echo $fila['nombre'] ?></option>
+        <?php
+        }
+        ?>
+    </select>
+<?php
 }
 
 if (function_exists($_GET['f'])) {

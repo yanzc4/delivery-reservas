@@ -93,6 +93,27 @@ function showComboCategoria()
 <?php
 }
 
+function showComboCategoriae()
+{
+    $conexion = conectar();
+    $resultado = mostrarCategoria($conexion);
+?>
+
+    <select class="form-select" name="elsCategoria" id="elsCategoria">
+        <?php
+        while ($fila = $resultado->fetch_assoc()) {
+
+
+        ?>
+            <option value="<?php echo $fila['id'] ?>"><?php echo $fila['nombre'] ?></option>
+
+        <?php
+        }
+        ?>
+    </select>
+<?php
+}
+
 if (function_exists($_GET['f'])) {
     $_GET['f'](); //llama la función si es que existe
 }

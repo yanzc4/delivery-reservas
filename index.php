@@ -151,7 +151,10 @@ if (isset($usuarioCliente)) {
         }
 
         .img-card {
-            width: 100%;
+            margin-top: 1rem;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
         }
 
         .tarjeta {
@@ -212,12 +215,16 @@ if (isset($usuarioCliente)) {
 
         .f-texto2{
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 3;
             /* Número de líneas */
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             line-height: 1.4;
+        }
+
+        .img3{
+            width: 100%;
         }
 
         @media (min-width: 1024px) {

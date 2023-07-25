@@ -6,8 +6,8 @@
             </span>
 
             <div class="text logo-text">
-                <span class="name">Boomerang</span>
-                <span class="profession">Cliente</span>
+                <span class="name">BooFast</span>
+                <span class="profession"><?php echo $nombreColaborador ?></span>
             </div>
         </div>
 

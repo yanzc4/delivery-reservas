@@ -30,6 +30,17 @@ if (!isset($usuarioCliente)) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../assets/css/cliente/cabecera.css">
+    <style>
+        .img3 {
+            width: 100%;
+            height: 120px;
+            background: var(--color-imagen);
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            border-radius: 10px;
+            box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 
 <body>

@@ -29,4 +29,10 @@ function loguearColaborador($conexion, $datos){
     $resultado = mysqli_query($conexion, $query);
     return $resultado;
 }
+
+function mostrarRepartidor($conexion){
+    $query = "select * from usuarios where rol='Delivery' and estado=1";
+    $resultado = $conexion->query($query);
+    return $resultado;
+}
 ?>

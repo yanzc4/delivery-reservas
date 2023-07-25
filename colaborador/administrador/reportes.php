@@ -15,9 +15,9 @@ $direccionColaborador = $_SESSION['direccionc'];
 $estadoColaborador = $_SESSION['estadoc'];
 
 if ($rolColaborador == "Delivery") {
-    header("location: delivery");
+    header("location: ../delivery");
 } elseif ($rolColaborador == "Monitoreo") {
-    header("location: monitoreo");
+    header("location: ../monitoreo");
 }elseif(!isset($rolColaborador)){
     header("location: ../");
 }
@@ -56,7 +56,7 @@ if ($rolColaborador == "Delivery") {
                                     <input class="form-control" type="date" id="fechafin" name="fechafin">
                                 </div>
                                 <div class="d-grid">
-                                    <button type="submit" id="btnfecha" class="btn btn-azul-gris w-25 mb-3"><i class='bx bx-printer'></i></button>
+                                    <button type="submit" id="btnfecha" class="btn btn-primary"><i class='bx bx-printer'></i></button>
                                 </div>
 
 
@@ -68,10 +68,10 @@ if ($rolColaborador == "Delivery") {
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-3">
                 <div class="container">
-                    <h3 class="pt-2 fw-bold text-azul-medio">Reporte de ganancias</h3>
+                    <h3 class="pt-2 fw-bold text-azul-medio">Reporte de Clientes Activos</h3>
                     <div class="container azul-oscuro redondear">
-                        <form action="../../backend/reports/reporteganancias.php" method="post">
-
+                        <form action="../../backend/reports/reporteclientes.php" method="post">
+                        <input type="submit" class="btn btn-info" value="Reporte de Clientes" id="rcliente" name="rcliente">
                         </form>
                     </div>
                 </div>
@@ -79,16 +79,27 @@ if ($rolColaborador == "Delivery") {
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-3">
                 <div class="container">
-                    <h3 class="pt-2 fw-bold text-azul-medio">Reporte de inventario</h3>
+                    <h3 class="pt-2 fw-bold text-azul-medio">Reporte de Empleados Activos</h3>
                     <div class="container azul-oscuro redondear">
-                        <form action="#" method="post">
-
+                        <form action="../../backend/reports/reporteempleados.php" method="post">
+                            <input type="submit" class="btn btn-warning" value="Reporte de Empleados" id="rempleados" name="rempleados">
                         </form>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-3">
+                <div class="container">
+                    <h3 class="pt-2 fw-bold text-azul-medio">Reporte de Productos Mas Vendidos</h3>
+                    <div class="container azul-oscuro redondear">
+                        <form action="../../backend/reports/reportePlatosVendidos.php" method="post">
+                            <input type="submit" class="btn btn-success" value="Reporte de Productos" id="rproducto" name="rproducto">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2 mb-3">
                 <div class="container">
                     <h3 class="pt-2 fw-bold text-azul-medio">Reporte de platos</h3>
                     <div class="container azul-oscuro redondear">
@@ -109,7 +120,7 @@ if ($rolColaborador == "Delivery") {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

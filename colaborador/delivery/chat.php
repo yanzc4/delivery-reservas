@@ -260,13 +260,7 @@ $cabecera = "Soporte";
         
         //variables
         var msgTxt = document.getElementById("msgTxt");
-        var name;
-        if(sessionStorage.getItem("name")){
-            name = sessionStorage.getItem("name");
-        }else{
-            name = prompt("Ingrese su nombre");
-            sessionStorage.setItem("name", name);
-        }
+        var name = "<?php echo $nombreColaborador ?>";
         //enviar mensaje
         module.sendMsg = function sendMsg() {
             var msg = msgTxt.value;

@@ -1,3 +1,28 @@
+<?php
+$cabecera="Delivery";
+
+session_start();
+$usuarioColaborador = $_SESSION['usuarioc'];
+$passwordColaborador = $_SESSION['passwordc'];
+$rolColaborador = $_SESSION['rolc'];
+$idColaborador = $_SESSION['idc'];
+$nombreColaborador = $_SESSION['nombrec'];
+$emailColaborador = $_SESSION['emailc'];
+$telefonoColaborador = $_SESSION['telefonoc'];
+$f_nacimientoColaborador = $_SESSION['f_nacimientoc'];
+$imagenColaborador = $_SESSION['imagenc'];
+$direccionColaborador = $_SESSION['direccionc'];
+$estadoColaborador = $_SESSION['estadoc'];
+
+if ($rolColaborador == "Delivery") {
+    header("location: ../delivery");
+} elseif ($rolColaborador == "Monitoreo") {
+    header("location: ../monitoreo");
+}elseif(!isset($rolColaborador)){
+    header("location: ../");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,6 +165,45 @@
             background: #F97777;
         }
 
+        .contiene {
+            width: 100%;
+            height: 94vh;
+            overflow-y: scroll;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .contiene::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 25px;
+        }
+
+        .contiene::-webkit-scrollbar-track {
+            background: #fff;
+        }
+
+        .contiene::-webkit-scrollbar-thumb {
+            background: #F97777;
+        }
+
+        .contiene::-webkit-scrollbar-thumb:hover {
+            background: #F97777;
+        }
+
+        .imagen {
+            width: 125px;
+            height: 125px;
+
+        }
+
+        #list {
+            width: 135px;
+            height: 135px;
+            padding: 5px;
+            background: #ccc;
+            border-radius: 5px;
+        }
+
         @media screen and (max-width: 720px) {
             main {
                 width: 100%;
@@ -157,21 +221,35 @@
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-3">
                 <div class="container">
                     <h2 class="pb-2">Registrar Platos</h2>
-                    <form method="post" id="frmRegistrarPlato">
+                    <form method="post" id="frmRegistrarPlato" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-6">
                                 <label class="form-label">Nombre</label>
-                                <input type="text" class="form-control" name="txtNombre">
+                                <input type="text" class="form-control" name="nomPlato">
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Precio</label>
-                                <input type="number" step="0.1" class="form-control" name="txtPrecio" id="">
+                                <input type="number" step="0.1" class="form-control" name="plaPrecio" id="">
                             </div>
                         </div>
 
+                        
 
-                        <label class="form-label">Imagen</label>
-                        <input type="file" class="form-control" name="txtImg" id="">
+                        <label class="form-label mt-2">Imagen</label>
+                        <div class="row">
+                            <div class="col 4">
+                                <div id="list"></div>
+                            </div>
+                            <div class="col-8">
+                                <input type="file" class="form-control" name="plaImagen" id="plaImagen">
+                            </div>
+                        </div>
+
+                        <div class="form-floating mt-2">
+                            <textarea name="plaDesc" class="form-control" placeholder="Descripción" style="height: 70px"></textarea>
+                            <label for="floatingTextarea2">Descripción</label>
+                        </div>
+
 
                         <div class="mt-2">
                             <div class="row mb-2">
@@ -191,16 +269,18 @@
                                 <button id="btnRegistrarPlato" class="btn btn-success w-100">Agregar</button>
                             </div>
                     </form>
+
                     <div class="col-6">
                         <button type="reset" class="btn btn-danger w-100">Borrar</button>
                     </div>
                 </div>
 
             </div>
+
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-            <div class="container">
+            <div class="container contiene">
                 <h2 class="pb-1">Platos</h2>
                 <table class="table bg-tabla">
                     <thead>
@@ -218,6 +298,7 @@
 
         </div>
         </div>
+
     </main>
 
     <!-- MODAL QUE HABRE PARA AGREGAR CATEGORIAS -->
@@ -237,7 +318,7 @@
                         <button class="btn btn-success mb-3 w-100" id="btnAgregarCategoria">Agregar</button>
                     </form>
                     <div class="container cuerpo">
-                    <div class="container" id="tablaCategorias"></div>                     
+                        <div class="container" id="tablaCategorias"></div>
                     </div>
                 </div>
             </div>
@@ -255,28 +336,22 @@
                 <div class="modal-body">
                     <form method="post" id="frmEditarPlato">
                         <div class="row">
-                        
+
+                            <input type="hidden" name="ide" id="ide">
                             <div class="col-6">
                                 <label class="form-label">Nombre</label>
-                                <input type="text" class="form-control" name="txtNombre">
+                                <input type="text" class="form-control" name="txtNombre" id="txtNombre">
                             </div>
                             <div class="col-6">
                                 <label class="form-label">Precio</label>
-                                <input type="number" step="0.1" class="form-control" name="txtPrecio" id="">
+                                <input type="number" step="0.1" class="form-control" name="txtPrecio" id="txtPrecio">
                             </div>
                         </div>
 
-                        <label class="form-label pt-2">Imagen</label>
-                        <input type="file" class="form-control" name="txtImg" id="">
-                        <label class="form-label pt-2">Categoria</label>
+
+                        <textarea class="form-control mt-2" name="myarea" id="myarea" cols="30" rows="5"></textarea>
 
 
-                        <select class="form-select" name="lsCategoria">
-                            <option value="">Combo</option>
-                            <option value="">Bebida</option>
-                            <option value="">Especiales</option>
-                            <option value="">Salchipapas</option>
-                        </select>
 
                         <button id="btnEditarPlato" class="btn btn-login w-100 mt-3 mb-2">Actualizar</button>
 
@@ -298,7 +373,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" id="frmEditarCategoria">
-                    <input class="form-control" type="hidden" id="etxtId" name="etxtId" />
+                        <input class="form-control" type="hidden" id="etxtId" name="etxtId" />
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input class="form-control" type="text" name="etxtNombreCategoria" id="etxtNombreCategoria" placeholder="Nombre de la categoria" required>
@@ -316,6 +391,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="../../assets/js/administrador/activarModoOscuro.js"></script>
     <script src="../../assets/js/administrador/crudCategorias.js"></script>
+    <script>
+        //scrip para mostrar vista previa de imagen
+        function archivo(evt) {
+            var files = evt.target.files; // FileList object
+            // Obtenemos la imagen del campo "file".
+            for (var i = 0, f; f = files[i]; i++) {
+                //Solo admitimos imágenes.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+                var reader = new FileReader();
+                reader.onload = (function(theFile) {
+                    return function(e) {
+                        // Insertamos la imagen
+                        document.getElementById("list").innerHTML = ['<img class="thumb imagen" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                    };
+                })(f);
+                reader.readAsDataURL(f);
+            }
+        }
+        document.getElementById('plaImagen').addEventListener('change', archivo, false);
+    </script>
 </body>
 
 </html>
