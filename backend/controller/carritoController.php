@@ -68,7 +68,15 @@ function showCarrito()
                                 <label class="w-100 text-wrap"><?php echo $fila['nombre'] ?></label><br>
                                 <span class="row mt-1">
                                     <span class="col-8">
-                                        <button onclick="disminuirCarrito(<?php echo $fila['id_cliente'] ?>, <?php echo $fila['id_producto'] ?>, <?php echo $fila['cantidad'] ?> - 1)" class="btn-cantidad">-</button>
+                                        <?php
+                                        if ($fila['cantidad'] == 1) {
+                                            $botond = "disabled";
+                                        } else {
+                                            $botond = "";
+                                        }
+                                        ?>
+                                        <button <?php echo $botond ?> onclick="disminuirCarrito(<?php echo $fila['id_cliente'] ?>, <?php echo $fila['id_producto'] ?>, <?php echo $fila['cantidad'] ?> - 1)" class="btn-cantidad">-</button>
+                                        
                                         <label for="" class="fs-8 pe-1 ps-1"><?php echo $fila['cantidad'] ?></< /label>
                                             <button onclick="aumentarCarrito(<?php echo $fila['id_cliente'] ?>, <?php echo $fila['id_producto'] ?>, <?php echo $fila['cantidad'] ?> + 1)" class="btn-cantidad">+</button>
                                     </span>
