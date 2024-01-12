@@ -1,6 +1,6 @@
 <?php
 //Datos de configuracion de la base de datos
-$servidor = "localhost:3307";
+$servidor = "localhost";
 $usuario = "root";
 $pass = "";
 $bbdd = 'prueba';
